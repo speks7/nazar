@@ -85,13 +85,13 @@ class PredictScreen extends Component {
           <View style={styles.container}>
             <AnswerNotification answer={this.state.result} />
             <CaptureAndShare
-              title="Partager"
+              title="Share"
               color="#3498db"
               image={sourceImage}
               onCancel={this._cancel}
             />
             <XPButton
-              title="Non merci"
+              title="Revert"
               color="black"
               textOnly
               onPress={this._cancel}

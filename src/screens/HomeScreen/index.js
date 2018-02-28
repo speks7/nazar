@@ -31,7 +31,7 @@ class HomeScreen extends Component {
 
     this.options = {
       title: "Select an image",
-      takePhotoButtonTitle: "To take a picture",
+      takePhotoButtonTitle: "Take a picture",
       chooseFromLibraryButtonTitle: "Choose from the gallery",
       cancelButtonTitle: "Cancel",
       cameraType: "back",
@@ -49,7 +49,7 @@ class HomeScreen extends Component {
       if (response.didCancel) {
         this.setState({ loading: false });
       } else if (response.error) {
-        Alert.alert("Error", "Check the permissions.", { cancelable: false });
+        Alert.alert("Error", "Check permissions.", { cancelable: false });
         this.setState({ loading: false });
       } else {
         const { navigate } = this.props.navigation;

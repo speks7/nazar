@@ -27,7 +27,7 @@ class CaptureAndShare extends Component {
         const image = `data:image/png;base64,${uri}`;
 
         const shareOptions = {
-          title: "SeePizz",
+          title: "Nazar",
           message: "Very relevant analysis with Nazar!",
           url: image,
           subject: "News from my food!"
@@ -69,7 +69,7 @@ class CaptureAndShare extends Component {
         ) : (
           <View>
             <ActivityIndicator size="large" color="#3498db" />
-            <Text>Préparation de la capture d'écran...</Text>
+            <Text>Preparing the screenshot...</Text>
           </View>
         )}
       </View>
