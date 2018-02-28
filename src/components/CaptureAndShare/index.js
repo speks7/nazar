@@ -3,7 +3,7 @@ import { View, ActivityIndicator, Text, Alert } from "react-native";
 import PropTypes from "prop-types";
 import Share from "react-native-share";
 import { captureScreen } from "react-native-view-shot";
-import XPButton from "../XPBouton";
+import XPButton from "../XPButton";
 
 class CaptureAndShare extends Component {
   constructor(props) {

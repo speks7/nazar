@@ -7,15 +7,7 @@ import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import cl.json.RNSharePackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
-import com.wix.RNCameraKit.RNCameraKitPackage;
-import cl.json.RNSharePackage;
-import com.imagepicker.ImagePickerPackage;
-import com.rnfs.RNFSPackage;
-import com.wix.RNCameraKit.RNCameraKitPackage;
-import com.imagepicker.ImagePickerPackage;
-import com.rnfs.RNFSPackage;
-import com.wix.RNCameraKit.RNCameraKitPackage;
-import com.rnfs.RNFSPackage;
+//import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -23,8 +15,6 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
-
-import com.wix.RNCameraKit.RNCameraKitPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -41,17 +31,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNViewShotPackage(),
             new RNSharePackage(),
             new ImagePickerPackage(),
-            new RNFSPackage(),
-            new RNCameraKitPackage(),
-            new RNSharePackage(),
-            new ImagePickerPackage(),
-            new RNFSPackage(),
-            new RNCameraKitPackage(),
-            new ImagePickerPackage(),
-            new RNFSPackage(),
-            new RNCameraKitPackage(),
-            new RNFSPackage(),
-          new RNCameraKitPackage()
+            new RNFSPackage()
+            //new RNCameraKitPackage()
       );
     }
 
