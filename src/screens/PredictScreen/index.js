@@ -3,6 +3,8 @@ import { ActivityIndicator, View, Text, StatusBar, Alert } from "react-native";
 import PropTypes from "prop-types";
 import { NavigationActions } from "react-navigation";
 
+import Clarifai from "clarifai";
+
 import BackgroundImage from "../../components/BackgroundImage";
 import AnswerNotification from "../../components/AnswerNotification";
 import CaptureAndShare from "../../components/CaptureAndShare";
@@ -28,7 +30,7 @@ class PredictScreen extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: aaa //dummy
+      apiKey: "" //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill

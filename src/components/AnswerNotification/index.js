@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, Text, Image } from "react-native";
+import { Animated, Text, Image, ImageBackground } from "react-native";
 import PropTypes from "prop-types";
 
 import styles from "./styles";
@@ -46,7 +46,7 @@ class AnswerNotification extends Component {
         ]}
       >
         <Text style={styles.text}>{this.props.answer}</Text>
-        <Image source={icon} style={styles.icon} />
+        <ImageBackground source={icon} style={styles.icon} />
       </Animated.View>
     );
   }

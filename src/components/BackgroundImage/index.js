@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View, Image, ImageBackground } from "react-native";
 import PropTypes from "prop-types";
 
 import styles from "./styles";
@@ -15,9 +15,9 @@ const BackgroundImage = props => {
 
   return (
     <View style={styles.container}>
-      <Image source={props.source} style={containerStyles}>
+      <ImageBackground source={props.source} style={containerStyles}>
         {props.children}
-      </Image>
+      </ImageBackground>
     </View>
   );
 };
