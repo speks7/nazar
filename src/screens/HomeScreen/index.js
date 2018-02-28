@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Alert, View, StatusBar, ActivityIndicator } from "react-native";
 import PropTypes from "prop-types";
 
-import ImagePicker from 'react-native-image-picker'
+import ImagePicker from "react-native-image-picker";
 
 import Header from "../../components/Header";
 import BackgroundImage from "../../components/BackgroundImage";
