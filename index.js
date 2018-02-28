@@ -1,4 +1,12 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { AppRegistry } from 'react-native'
+import { StackNavigator } from 'react-navigation'
 
-AppRegistry.registerComponent('nazar', () => App);
+import HomeScreen from './screens/HomeScreen'
+import PredictScreen from './screens/PredictScreen'
+
+const App = StackNavigator({
+  Home: { screen: HomeScreen },
+  Prediction: { screen: PredictScreen }
+})
+
+AppRegistry.registerComponent('nazar', () => App)
