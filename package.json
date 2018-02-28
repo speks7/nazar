@@ -15,6 +15,7 @@
     "react-native-fs": "^2.9.11",
     "react-native-image-picker": "^0.26.7",
     "react-native-share": "^1.0.26",
+    "react-native-view-shot": "^2.3.0",
     "react-navigation": "^1.2.1"
   },
   "devDependencies": {

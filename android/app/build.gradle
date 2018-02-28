@@ -137,6 +137,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-view-shot')
+    compile project(':react-native-share')
+    compile project(':react-native-image-picker')
+    compile project(':react-native-fs')
+    compile project(':react-native-camera-kit')
     compile project(':react-native-share')
     compile project(':react-native-image-picker')
     compile project(':react-native-fs')

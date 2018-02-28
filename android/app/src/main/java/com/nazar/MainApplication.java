@@ -3,6 +3,11 @@ package com.nazar;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+import cl.json.RNSharePackage;
+import com.imagepicker.ImagePickerPackage;
+import com.rnfs.RNFSPackage;
+import com.wix.RNCameraKit.RNCameraKitPackage;
 import cl.json.RNSharePackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
@@ -33,6 +38,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNViewShotPackage(),
+            new RNSharePackage(),
+            new ImagePickerPackage(),
+            new RNFSPackage(),
+            new RNCameraKitPackage(),
             new RNSharePackage(),
             new ImagePickerPackage(),
             new RNFSPackage(),
