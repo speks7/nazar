@@ -12,6 +12,7 @@
     "react-native": "0.53.3",
     "react-native-camera-kit": "^5.3.22",
     "react-native-fs": "^2.9.11",
+    "react-native-image-picker": "^0.26.7",
     "react-navigation": "^1.2.1"
   },
   "devDependencies": {

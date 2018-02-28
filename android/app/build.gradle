@@ -137,6 +137,9 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-picker')
+    compile project(':react-native-fs')
+    compile project(':react-native-camera-kit')
     compile project(':react-native-fs')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:25.0.1"

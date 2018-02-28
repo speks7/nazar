@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Alert, View, StatusBar, ActivityIndicator } from "react-native";
 import PropTypes from "prop-types";
 
+import ImagePicker from 'react-native-image-picker'
+
 import Header from "../../components/Header";
 import BackgroundImage from "../../components/BackgroundImage";
 import XPButton from "../../components/XPButton";
@@ -26,6 +28,19 @@ class HomeScreen extends Component {
     };
 
     this._onClick = this._onClick.bind(this);
+
+    this.options = {
+      title: "Select an image",
+      takePhotoButtonTitle: "To take a picture",
+      chooseFromLibraryButtonTitle: "Choose from the gallery",
+      cancelButtonTitle: "Cancel",
+      cameraType: "back",
+      mediaType: "photo",
+      storageOptions: {
+        skipBackup: true,
+        path: "Nazar"
+      }
+    };
   }
 
   _onClick() {
@@ -34,11 +49,7 @@ class HomeScreen extends Component {
       if (response.didCancel) {
         this.setState({ loading: false });
       } else if (response.error) {
-        Alert.alert(
-          "Error",
-          "Check the permissions.",
-          { cancelable: false }
-        );
+        Alert.alert("Error", "Check the permissions.", { cancelable: false });
         this.setState({ loading: false });
       } else {
         const { navigate } = this.props.navigation;
