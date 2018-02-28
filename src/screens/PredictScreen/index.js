@@ -6,7 +6,7 @@ import { NavigationActions } from "react-navigation";
 import BackgroundImage from "../../components/BackgroundImage";
 import AnswerNotification from "../../components/AnswerNotification";
 import CaptureAndShare from "../../components/CaptureAndShare";
-import XPButton from "../../components/XPBouton";
+import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
