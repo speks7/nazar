@@ -7,7 +7,6 @@ import Clarifai from "clarifai";
 
 import BackgroundImage from "../../components/BackgroundImage";
 import AnswerNotification from "../../components/AnswerNotification";
-import CaptureAndShare from "../../components/CaptureAndShare";
 import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
@@ -30,7 +29,7 @@ class PredictScreen extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: "" //dummy
+      apiKey: "b0959ce79c6e4b6eb7af2c91fb561046" //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill
@@ -84,15 +83,9 @@ class PredictScreen extends Component {
         ) : (
           <View style={styles.container}>
             <AnswerNotification answer={this.state.result} />
-            <CaptureAndShare
-              title="Share"
-              color="#3498db"
-              image={sourceImage}
-              onCancel={this._cancel}
-            />
             <XPButton
               title="Revert"
-              color="black"
+              color="#3498db"
               textOnly
               onPress={this._cancel}
             />
