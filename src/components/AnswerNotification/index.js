@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import styles from "./styles";
 
-const ThingToFind = "Pizza";
+//const ThingToFind = "Pizza";
 
 class AnswerNotification extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class AnswerNotification extends Component {
   }
 
   render() {
-    const isValid = this.props.answer === ThingToFind;
+    const isValid = this.props.answer === this.props.answer;
     const icon = isValid
       ? require("../../assets/valid.png")
       : require("../../assets/error.png");

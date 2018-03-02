@@ -29,7 +29,7 @@ class PredictScreen extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: "b0959ce79c6e4b6eb7af2c91fb561046" //dummy
+      apiKey: "" //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill
@@ -41,18 +41,15 @@ class PredictScreen extends Component {
       .predict(Clarifai.GENERAL_MODEL, file)
       .then(response => {
         const { concepts } = response.outputs[0].data;
-
+        
         if (concepts && concepts.length > 0) {
           for (const prediction of concepts) {
-            if (prediction.name === "pizza" && prediction.value >= 0.99) {
-              return this.setState({ loading: false, result: "Pizza" });
-            }
-            this.setState({ result: "Not Pizza" });
+              return this.setState({ loading: false, result: prediction.name });
           }
         }
-
-        this.setState({ loading: false });
       })
+      .catch(err => alert(err));
+      /*
       .catch(e => {
         Alert.alert(
           "An error has occurred",
@@ -60,7 +57,7 @@ class PredictScreen extends Component {
           [{ text: "OK", onPress: () => this._cancel() }],
           { cancelable: false }
         );
-      });
+      });*/
   }
 
   _cancel() {
