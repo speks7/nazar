@@ -42,12 +42,7 @@ TabSelector.propTypes = {
 
 class Home extends Component {
   static navigationOptions = {
-    header: (
-      <Header
-        title="nazar"
-        subtitle="Electronic component detection"
-      />
-    )
+    header: <Header title="nazar" subtitle="Electronic component detection" />
   };
 
   constructor() {
@@ -158,8 +153,8 @@ class Home extends Component {
       password,
       passwordConfirmation
     } = this.state;
-    const isLoginPage = selectedCategory === 0;
-    const isSignUpPage = selectedCategory === 1;
+    const isPredictPage = selectedCategory === 0;
+    const isAboutPage = selectedCategory === 1;
     return (
       <View style={styles.container}>
         <ImageBackground source={BG_IMAGE} style={styles.bgImage}>
@@ -184,7 +179,7 @@ class Home extends Component {
                   onPress={() => this.selectCategory(0)}
                   textStyle={[
                     styles.categoryText,
-                    isLoginPage && styles.selectedCategoryText
+                    isPredictPage && styles.selectedCategoryText
                   ]}
                   text={"Predict"}
                 />
@@ -195,29 +190,29 @@ class Home extends Component {
                   onPress={() => this.selectCategory(1)}
                   textStyle={[
                     styles.categoryText,
-                    isSignUpPage && styles.selectedCategoryText
+                    isAboutPage && styles.selectedCategoryText
                   ]}
                   text={"About"}
                 />
               </View>
               <View style={styles.rowSelector}>
-                <TabSelector selected={isLoginPage} />
-                <TabSelector selected={isSignUpPage} />
+                <TabSelector selected={isPredictPage} />
+                <TabSelector selected={isAboutPage} />
               </View>
               <View style={styles.formContainer}>
-                {isSignUpPage && (
-                  <Text>Nazaria</Text>
+                {isAboutPage && <Text>Nazaria</Text>}
+                {isPredictPage && (
+                  <Button
+                    buttonStyle={styles.loginButton}
+                    containerStyle={{ marginTop: 32, flex: 0 }}
+                    activeOpacity={0.8}
+                    text={isPredictPage ? "Analyze an image" : "SIGN UP"}
+                    onPress={this._onClick}
+                    textStyle={styles.loginTextButton}
+                    loading={isLoading}
+                    disabled={isLoading}
+                  />
                 )}
-                <Button
-                  buttonStyle={styles.loginButton}
-                  containerStyle={{ marginTop: 32, flex: 0 }}
-                  activeOpacity={0.8}
-                  text={isLoginPage ? "LOGIN" : "SIGN UP"}
-                  onPress={isLoginPage ? this.login : this.signUp}
-                  textStyle={styles.loginTextButton}
-                  loading={isLoading}
-                  disabled={isLoading}
-                />
               </View>
             </KeyboardAvoidingView>
             <View style={styles.helpContainer}>
