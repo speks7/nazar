@@ -42,7 +42,7 @@ TabSelector.propTypes = {
 
 class Home extends Component {
   static navigationOptions = {
-    header: <Header title="nazar" subtitle="Electronic component detection" />
+    header: null
   };
 
   constructor() {
