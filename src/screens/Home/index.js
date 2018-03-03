@@ -10,7 +10,7 @@ import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
-class HomeScreen extends Component {
+class Home extends Component {
   static navigationOptions = {
     header: (
       <Header
@@ -75,8 +75,8 @@ class HomeScreen extends Component {
   }
 }
 
-HomeScreen.propTypes = {
+Home.propTypes = {
   navigation: PropTypes.object
 };
 
-export default HomeScreen;
+export default Home;

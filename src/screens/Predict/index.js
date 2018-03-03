@@ -11,7 +11,7 @@ import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
-class PredictScreen extends Component {
+class Predict extends Component {
   static navigationOptions = {
     header: null
   };
@@ -93,8 +93,8 @@ class PredictScreen extends Component {
   }
 }
 
-PredictScreen.propTypes = {
+Predict.propTypes = {
   navigation: PropTypes.object
 };
 
-export default PredictScreen;
+export default Predict;
