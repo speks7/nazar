@@ -27,16 +27,16 @@ const styles = StyleSheet.create({
     borderColor: "white",
     backgroundColor: "white"
   },
-  loginContainer: {
+  loadContainer: {
     alignItems: "center",
     justifyContent: "center"
   },
-  loginTextButton: {
+  loadTextButton: {
     fontSize: 16,
     color: "white",
     fontWeight: "bold"
   },
-  loginButton: {
+  loadButton: {
     backgroundColor: "rgba(232, 147, 142, 1)",
     borderRadius: 10,
     height: 50,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
     alignItems: "center"
   },
-  loginText: {
+  loadText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "white"

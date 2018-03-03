@@ -97,13 +97,7 @@ class Home extends Component {
   render() {
     const {
       selectedCategory,
-      loading,
-      isEmailValid,
-      isPasswordValid,
-      isConfirmationValid,
-      email,
-      password,
-      passwordConfirmation
+      loading
     } = this.state;
     const isPredictPage = selectedCategory === 0;
     const isAboutPage = selectedCategory === 1;
@@ -113,7 +107,7 @@ class Home extends Component {
         <ImageBackground source={BG_IMAGE} style={styles.bgImage}>
           <View>
             <KeyboardAvoidingView
-              contentContainerStyle={styles.loginContainer}
+              contentContainerStyle={styles.loadContainer}
               behavior="position"
             >
               <View style={styles.titleContainer}>
@@ -156,12 +150,12 @@ class Home extends Component {
                 {isAboutPage && <Text>Nazaria</Text>}
                 {isPredictPage && (
                   <Button
-                    buttonStyle={styles.loginButton}
+                    buttonStyle={styles.loadButton}
                     containerStyle={{ marginTop: 32, flex: 0 }}
                     activeOpacity={0.8}
                     text={isPredictPage ? "Analyze an image" : "SIGN UP"}
                     onPress={this._onClick}
-                    textStyle={styles.loginTextButton}
+                    textStyle={styles.loadTextButton}
                     loading={loading}
                     disabled={loading}
                   />
