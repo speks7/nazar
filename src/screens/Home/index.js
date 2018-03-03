@@ -146,9 +146,9 @@ class Home extends Component {
                 {isPredictPage && (
                   <Button
                     buttonStyle={styles.loadButton}
-                    containerStyle={{ marginTop: 32, flex: 0 }}
+                    containerStyle={{ flex: 0 }}
                     activeOpacity={0.8}
-                    text={isPredictPage ? "Analyze an image" : "SIGN UP"}
+                    text={"Analyze an image"}
                     onPress={this._onClick}
                     textStyle={styles.loadTextButton}
                     loading={loading}
