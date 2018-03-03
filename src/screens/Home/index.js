@@ -41,15 +41,14 @@ TabSelector.propTypes = {
 };
 
 class Home extends Component {
-  /*
   static navigationOptions = {
     header: (
       <Header
         title="nazar"
-        subtitle="&quot;Electronic component detection system&quot;"
+        subtitle="Electronic component detection"
       />
     )
-  };*/
+  };
 
   constructor() {
     super();
@@ -171,10 +170,10 @@ class Home extends Component {
             >
               <View style={styles.titleContainer}>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.titleText}>BEAUX</Text>
+                  <Text style={styles.titleText}>NAZAR</Text>
                 </View>
                 <View style={{ marginTop: -10, marginLeft: 10 }}>
-                  <Text style={styles.titleText}>VOYAGES</Text>
+                  <Text style={styles.titleText}>Prediction</Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -187,7 +186,7 @@ class Home extends Component {
                     styles.categoryText,
                     isLoginPage && styles.selectedCategoryText
                   ]}
-                  text={"Login"}
+                  text={"Predict"}
                 />
                 <Button
                   disabled={isLoading}
@@ -198,7 +197,7 @@ class Home extends Component {
                     styles.categoryText,
                     isSignUpPage && styles.selectedCategoryText
                   ]}
-                  text={"Sign up"}
+                  text={"About"}
                 />
               </View>
               <View style={styles.rowSelector}>
@@ -286,7 +285,7 @@ class Home extends Component {
             </KeyboardAvoidingView>
             <View style={styles.helpContainer}>
               <Button
-                text={"Need help ?"}
+                text={"Learn more ?"}
                 textStyle={{ color: "white" }}
                 buttonStyle={{ backgroundColor: "transparent" }}
                 underlayColor="transparent"
