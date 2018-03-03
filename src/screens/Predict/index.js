@@ -7,9 +7,7 @@ import { Button, Text } from "react-native-elements";
 
 import Clarifai from "clarifai";
 
-import BackgroundImage from "../../components/BackgroundImage";
 import Notif from "../../components/Notif";
-import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
@@ -32,7 +30,7 @@ class Predict extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: "b0959ce79c6e4b6eb7af2c91fb561046" //dummy
+      apiKey: "" //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill
