@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Alert, View, StatusBar, ActivityIndicator, Dimensions, UIManager } from "react-native";
+import {
+  Alert,
+  View,
+  StatusBar,
+  ActivityIndicator,
+  UIManager,
+  ImageBackground
+} from "react-native";
 import PropTypes from "prop-types";
 
 import ImagePicker from "react-native-image-picker";
@@ -10,15 +17,13 @@ import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
+const BG_IMAGE = require("../../assets/bkg.jpg");
 
-const BG_IMAGE = require('../../assets/bkg.jpg');
-
-UIManager.setLayoutAnimationEnabledExperimental
-  && UIManager.setLayoutAnimationEnabledExperimental(true);
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 class Home extends Component {
+  /*
   static navigationOptions = {
     header: (
       <Header
@@ -26,7 +31,7 @@ class Home extends Component {
         subtitle="&quot;Electronic component detection system&quot;"
       />
     )
-  };
+  };*/
 
   constructor() {
     super();
@@ -71,13 +76,13 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <BackgroundImage source={require("../../assets/bkg.jpg")}>
+        <ImageBackground source={BG_IMAGE} style={styles.bgImage}>
           {!this.state.loading ? (
             <XPButton title="Analyze an image" onPress={this._onClick} />
           ) : (
             <ActivityIndicator size="large" color="#e74c3c" />
           )}
-        </BackgroundImage>
+        </ImageBackground>
       </View>
     );
   }
