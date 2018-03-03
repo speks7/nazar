@@ -12,16 +12,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "stretch"
   },
-  notifValid: {
-    backgroundColor: "green"
-  },
-  notifError: {
-    backgroundColor: "red"
+  notif: {
+    backgroundColor: "transparent"
   },
   text: {
     color: "white",
     fontSize: 30,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginTop: 20
   },
   icon: {
     width: 30,

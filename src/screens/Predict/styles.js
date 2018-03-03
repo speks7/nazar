@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     height: 45,
     backgroundColor: "#00aeefff",
+    marginBottom: 10
   },
   ButtonText: {
     fontFamily: 'bold',

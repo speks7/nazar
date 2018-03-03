@@ -8,7 +8,7 @@ import { Button, Text } from "react-native-elements";
 import Clarifai from "clarifai";
 
 import BackgroundImage from "../../components/BackgroundImage";
-import AnswerNotification from "../../components/AnswerNotification";
+import Notif from "../../components/Notif";
 import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
@@ -23,7 +23,8 @@ class Predict extends Component {
 
     this.state = {
       loading: true,
-      result: ""
+      result: "",
+      value: null
     };
 
     this._cancel = this._cancel.bind(this);
@@ -31,7 +32,7 @@ class Predict extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: "" //dummy
+      apiKey: "b0959ce79c6e4b6eb7af2c91fb561046" //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill
@@ -46,7 +47,7 @@ class Predict extends Component {
         
         if (concepts && concepts.length > 0) {
           for (const prediction of concepts) {
-              return this.setState({ loading: false, result: prediction.name });
+              return this.setState({ loading: false, result: prediction.name, value: prediction.value });
           }
         }
       })
@@ -81,7 +82,7 @@ class Predict extends Component {
           </View>
         ) : (
           <View style={styles.container}>
-            <AnswerNotification answer={this.state.result} />
+            <Notif answer={this.state.result} value={this.state.value} />
             <Button
               text="Revert"
               containerStyle={{ flex: -1 }}

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Animated, Text, Image, ImageBackground } from "react-native";
+import { Animated, Image, ImageBackground } from "react-native";
 import PropTypes from "prop-types";
+
+import { Text } from "react-native-elements";
 
 import styles from "./styles";
 
-//const ThingToFind = "Pizza";
-
-class AnswerNotification extends Component {
+class Notif extends Component {
   constructor(props) {
     super(props);
 
@@ -23,18 +23,11 @@ class AnswerNotification extends Component {
   }
 
   render() {
-    const isValid = this.props.answer === this.props.answer;
-    const icon = isValid
-      ? require("../../assets/valid.png")
-      : require("../../assets/error.png");
+    const icon = require("../../assets/valid.png");
 
     const notifStyles = [styles.container];
 
-    if (isValid) {
-      notifStyles.push(styles.notifValid);
-    } else {
-      notifStyles.push(styles.notifError);
-    }
+    notifStyles.push(styles.notif);
 
     return (
       <Animated.View
@@ -46,14 +39,15 @@ class AnswerNotification extends Component {
         ]}
       >
         <Text style={styles.text}>{this.props.answer}</Text>
+        <Text style={styles.text}>{this.props.value}</Text>
         <ImageBackground source={icon} style={styles.icon} />
       </Animated.View>
     );
   }
 }
 
-AnswerNotification.propTypes = {
+Notif.propTypes = {
   answer: PropTypes.string
 };
 
-export default AnswerNotification;
+export default Notif;
