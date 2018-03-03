@@ -1,7 +1,10 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 const blackTransparent = "rgba(0,0,0,0.75)";
 const white = "rgba(255,255,255,1.0)";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   container: {
@@ -24,6 +27,26 @@ const styles = StyleSheet.create({
   loaderText: {
     color: white,
     fontSize: 16
+  },
+  bgImage: {
+    flex: 1,
+    top: 0,
+    left: 0,
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  Button: {
+    width: 250,
+    borderRadius: 50,
+    height: 45,
+    backgroundColor: "#00aeefff",
+  },
+  ButtonText: {
+    fontFamily: 'bold',
+    fontSize: 13,
+    color: "white"
   }
 });
 

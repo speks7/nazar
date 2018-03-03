@@ -7,20 +7,15 @@ import {
   UIManager,
   ImageBackground,
   KeyboardAvoidingView,
-  Text,
   LayoutAnimation,
   Image
 } from "react-native";
 
-import { Button } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 
 import PropTypes from "prop-types";
 
 import ImagePicker from "react-native-image-picker";
-
-import Header from "../../components/Header";
-import BackgroundImage from "../../components/BackgroundImage";
-import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
 
@@ -142,7 +137,7 @@ class Home extends Component {
               </View>
               <View style={styles.formContainer}>
                 {isAboutPage && (
-                  <Text>
+                  <Text style={styles.titleText}>
                     Nazar is an electronic component detection app which allows
                     the user to identify different e-devices and fetch a feed
                     from the web to what is might function in real life

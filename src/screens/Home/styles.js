@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
     opacity: 1
   },
   titleText: {
-    color: "white",
-    fontSize: 30,
+    color: "black",
+    fontSize: 15,
     fontFamily: "regular"
   },
   helpContainer: {

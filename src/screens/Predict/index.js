@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { ActivityIndicator, View, Text, StatusBar, Alert } from "react-native";
+import { ActivityIndicator, View, StatusBar, Alert, ImageBackground } from "react-native";
 import PropTypes from "prop-types";
 import { NavigationActions } from "react-navigation";
+
+import { Button, Text } from "react-native-elements";
 
 import Clarifai from "clarifai";
 
@@ -70,25 +72,26 @@ class Predict extends Component {
     const sourceImage = `data:${type};base64,${data}`;
 
     return (
-      <BackgroundImage source={{ uri: sourceImage }} resizeMode="cover">
+      <ImageBackground source={{ uri: sourceImage }} style={styles.bgImage}>
         <StatusBar hidden />
         {this.state.loading ? (
           <View style={styles.loader}>
-            <ActivityIndicator size={75} color="#95a5a6" />
+            <ActivityIndicator size={65} color="#00aeefff" />
             <Text style={styles.loaderText}>Analysis in progress...</Text>
           </View>
         ) : (
           <View style={styles.container}>
             <AnswerNotification answer={this.state.result} />
-            <XPButton
-              title="Revert"
-              color="#3498db"
-              textOnly
+            <Button
+              text="Revert"
+              containerStyle={{ flex: -1 }}
+              buttonStyle={styles.Button}
+              textStyle={styles.ButtonText}
               onPress={this._cancel}
             />
           </View>
         )}
-      </BackgroundImage>
+      </ImageBackground>
     );
   }
 }
