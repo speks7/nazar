@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="100"
+   height="100"
+   id="svg14"
+   sodipodi:docname="Ball_with_eyes.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata20">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Certified by Goo cabal</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview16"
+     showgrid="false"
+     inkscape:zoom="4.9867601"
+     inkscape:cx="43.879525"
+     inkscape:cy="59.205653"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <title
+     id="title2">Certified by Goo cabal</title>
+  <circle
+     cx="49.183117"
+     cy="51.385563"
+     style="fill:#00aeef;stroke:none;stroke-width:0.52985519;fill-opacity:1"
+     id="circle4"
+     r="26.492762" />
+  <circle
+     cx="38.586014"
+     cy="51.385563"
+     r="7.9478283"
+     style="fill:#ffffff;stroke:none;stroke-width:0.52985519"
+     id="circle6" />
+  <circle
+     cx="38.586014"
+     cy="51.385563"
+     r="2.6492763"
+     style="fill:#000000;stroke:none;stroke-width:0.52985519"
+     id="circle8" />
+  <circle
+     cx="59.78022"
+     cy="51.385563"
+     r="7.9478283"
+     style="fill:#ffffff;stroke:none;stroke-width:0.52985519"
+     id="circle10" />
+  <circle
+     cx="59.78022"
+     cy="51.385563"
+     r="2.6492763"
+     style="fill:#000000;stroke:none;stroke-width:0.52985519"
+     id="circle12" />
+  <path
+     style="fill:none;stroke:#000000;stroke-width:4.36723804px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 57.879824,20.768345 8.52485,3.655377 9.690902,-6.808522 7.948374,7.939637 -7.13607,10.127627 3.423914,8.673332 11.695466,2.00893 v 11.245639 l -12.175862,2.096274 -3.707784,8.634029 6.843462,9.642862 -7.961476,7.952744 -10.07085,-7.15354 -8.690803,3.423914 -2.052603,11.712927 H 42.970073 l -2.026399,-12.22389 -8.64713,-3.694687 -9.704003,6.878398 -7.909069,-7.96584 L 21.837009,66.8034 18.413092,58.112597 6.6564887,56.073095 V 44.875499 l 12.2850413,-2.096275 3.664112,-8.590357 -6.847831,-9.704001 7.935275,-7.93964 10.127625,7.153536 8.655863,-3.423913 2.019273,-11.6485646 11.239664,-0.08184 z"
+     id="path839"
+     inkscape:connector-curvature="0" />
+</svg>
