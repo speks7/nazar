@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, View, StatusBar, ActivityIndicator } from "react-native";
+import { Alert, View, StatusBar, ActivityIndicator, Dimensions, UIManager } from "react-native";
 import PropTypes from "prop-types";
 
 import ImagePicker from "react-native-image-picker";
@@ -9,6 +9,14 @@ import BackgroundImage from "../../components/BackgroundImage";
 import XPButton from "../../components/XPButton";
 
 import styles from "./styles";
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+
+const BG_IMAGE = require('../../assets/bkg.jpg');
+
+UIManager.setLayoutAnimationEnabledExperimental
+  && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 class Home extends Component {
   static navigationOptions = {
