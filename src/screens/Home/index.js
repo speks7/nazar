@@ -49,24 +49,12 @@ class Home extends Component {
     super();
 
     this.state = {
-      loading: false
-    };
-
-    this.state = {
-      email: "",
-      password: "",
-      fontLoaded: false,
-      selectedCategory: 0,
-      isLoading: false,
-      isEmailValid: true,
-      isPasswordValid: true,
-      isConfirmationValid: true
+      loading: false,
+      selectedCategory: 0
     };
 
     this._onClick = this._onClick.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
-    this.login = this.login.bind(this);
-    this.signUp = this.signUp.bind(this);
 
     this.options = {
       title: "Select an image",
@@ -102,50 +90,14 @@ class Home extends Component {
     LayoutAnimation.easeInEaseOut();
     this.setState({
       selectedCategory,
-      isLoading: false
+      loading: false
     });
-  }
-
-  validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    return re.test(email);
-  }
-
-  login() {
-    const { email, password } = this.state;
-    this.setState({ isLoading: true });
-    // Simulate an API call
-    setTimeout(() => {
-      LayoutAnimation.easeInEaseOut();
-      this.setState({
-        isLoading: false,
-        isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
-        isPasswordValid: password.length >= 8 || this.passwordInput.shake()
-      });
-    }, 1500);
-  }
-
-  signUp() {
-    const { email, password, passwordConfirmation } = this.state;
-    this.setState({ isLoading: true });
-    // Simulate an API call
-    setTimeout(() => {
-      LayoutAnimation.easeInEaseOut();
-      this.setState({
-        isLoading: false,
-        isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
-        isPasswordValid: password.length >= 8 || this.passwordInput.shake(),
-        isConfirmationValid:
-          password == passwordConfirmation || this.confirmationInput.shake()
-      });
-    }, 1500);
   }
 
   render() {
     const {
       selectedCategory,
-      isLoading,
+      loading,
       isEmailValid,
       isPasswordValid,
       isConfirmationValid,
@@ -157,6 +109,7 @@ class Home extends Component {
     const isAboutPage = selectedCategory === 1;
     return (
       <View style={styles.container}>
+        <StatusBar hidden />
         <ImageBackground source={BG_IMAGE} style={styles.bgImage}>
           <View>
             <KeyboardAvoidingView
@@ -173,7 +126,7 @@ class Home extends Component {
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Button
-                  disabled={isLoading}
+                  disabled={loading}
                   clear
                   activeOpacity={0.7}
                   onPress={() => this.selectCategory(0)}
@@ -184,7 +137,7 @@ class Home extends Component {
                   text={"Predict"}
                 />
                 <Button
-                  disabled={isLoading}
+                  disabled={loading}
                   clear
                   activeOpacity={0.7}
                   onPress={() => this.selectCategory(1)}
@@ -209,8 +162,8 @@ class Home extends Component {
                     text={isPredictPage ? "Analyze an image" : "SIGN UP"}
                     onPress={this._onClick}
                     textStyle={styles.loginTextButton}
-                    loading={isLoading}
-                    disabled={isLoading}
+                    loading={loading}
+                    disabled={loading}
                   />
                 )}
               </View>
