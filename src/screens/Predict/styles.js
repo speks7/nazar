@@ -38,15 +38,15 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   Button: {
-    width: 250,
+    width: 150,
     borderRadius: 50,
     height: 45,
     backgroundColor: "#00aeefff",
-    marginBottom: 10
+    marginBottom: 30
   },
   ButtonText: {
     fontFamily: 'bold',
-    fontSize: 13,
+    fontSize: 20,
     color: "white"
   }
 });

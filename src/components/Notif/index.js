@@ -38,7 +38,7 @@ class Notif extends Component {
           }
         ]}
       >
-        <Text style={styles.text}>{this.props.answer}</Text>
+        <Text style={styles.text}>{this.props.answer.toUpperCase()}</Text>
         <Text style={styles.text}>{this.props.value}</Text>
         <ImageBackground source={icon} style={styles.icon} />
       </Animated.View>
