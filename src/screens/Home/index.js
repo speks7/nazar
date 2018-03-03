@@ -8,10 +8,11 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
   Text,
-  LayoutAnimation
+  LayoutAnimation,
+  Image
 } from "react-native";
 
-import { Input, Button } from "react-native-elements";
+import { Button } from "react-native-elements";
 
 import PropTypes from "prop-types";
 
@@ -24,6 +25,7 @@ import XPButton from "../../components/XPButton";
 import styles from "./styles";
 
 const BG_IMAGE = require("../../assets/bkg.jpg");
+const IC_IMAGE = require("../../assets/MainScreen.png");
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -95,10 +97,7 @@ class Home extends Component {
   }
 
   render() {
-    const {
-      selectedCategory,
-      loading
-    } = this.state;
+    const { selectedCategory, loading } = this.state;
     const isPredictPage = selectedCategory === 0;
     const isAboutPage = selectedCategory === 1;
     return (
@@ -111,12 +110,7 @@ class Home extends Component {
               behavior="position"
             >
               <View style={styles.titleContainer}>
-                <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.titleText}>NAZAR</Text>
-                </View>
-                <View style={{ marginTop: -10, marginLeft: 10 }}>
-                  <Text style={styles.titleText}>Prediction</Text>
-                </View>
+                <Image style={styles.logo} source={IC_IMAGE} />
               </View>
               <View style={{ flexDirection: "row" }}>
                 <Button
@@ -168,7 +162,7 @@ class Home extends Component {
                 textStyle={{ color: "white" }}
                 buttonStyle={{ backgroundColor: "transparent" }}
                 underlayColor="transparent"
-                onPress={() => console.log("Account created")}
+                onPress={() => console.log("To github repo")}
               />
             </View>
           </View>

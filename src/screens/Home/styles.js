@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     width: 200
   },
   titleContainer: {
-    height: 150,
+    height: 280,
     backgroundColor: "transparent",
     justifyContent: "center"
   },
@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "white"
+  },
+  logo: {
+    width: 268,
+    height: 250
   },
   bgImage: {
     flex: 1,
