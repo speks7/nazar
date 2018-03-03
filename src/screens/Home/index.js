@@ -141,7 +141,13 @@ class Home extends Component {
                 <TabSelector selected={isAboutPage} />
               </View>
               <View style={styles.formContainer}>
-                {isAboutPage && <Text>Nazaria</Text>}
+                {isAboutPage && (
+                  <Text>
+                    Nazar is an electronic component detection app which allows
+                    the user to identify different e-devices and fetch a feed
+                    from the web to what is might function in real life
+                  </Text>
+                )}
                 {isPredictPage && (
                   <Button
                     buttonStyle={styles.loadButton}
