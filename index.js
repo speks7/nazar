@@ -9,4 +9,4 @@ const App = StackNavigator({
   Prediction: { screen: Predict }
 })
 
-AppRegistry.registerComponent('nazar', () => App)
+AppRegistry.registerComponent('Nazar', () => App)

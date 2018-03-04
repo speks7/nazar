@@ -1,7 +1,8 @@
 {
-  "name": "nazar",
-  "version": "0.0.1",
+  "name": "Nazar",
+  "version": "0.0.3",
   "private": true,
+  "author": "speks",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
