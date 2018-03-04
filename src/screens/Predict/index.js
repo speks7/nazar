@@ -7,6 +7,8 @@ import { Button, Text } from "react-native-elements";
 
 import Clarifai from "clarifai";
 
+import { CLARIFAY_KEY } from 'react-native-dotenv';
+
 import Notif from "../../components/Notif";
 
 import styles from "./styles";
@@ -30,7 +32,7 @@ class Predict extends Component {
 
   componentDidMount() {
     const clarifai = new Clarifai.App({
-      apiKey: "" //dummy
+      apiKey: CLARIFAY_KEY //dummy
     });
 
     process.nextTick = setImmediate; // RN polyfill

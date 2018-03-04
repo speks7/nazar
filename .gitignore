@@ -30,6 +30,10 @@ build/
 local.properties
 *.iml
 
+# env files
+.env
+.env.prod
+
 # node.js
 #
 node_modules/
@@ -51,3 +55,5 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+.vscode/
