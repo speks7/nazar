@@ -15,6 +15,8 @@ import { Button, Text } from "react-native-elements";
 
 import PropTypes from "prop-types";
 
+import SplashScreen from 'react-native-splash-screen';
+
 import ImagePicker from "react-native-image-picker";
 
 import styles from "./styles";
@@ -65,6 +67,13 @@ class Home extends Component {
         path: "Nazar"
       }
     };
+  }
+
+  componentDidMount() {
+    //SplashScreen.show();
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
   }
 
   _onClick() {
