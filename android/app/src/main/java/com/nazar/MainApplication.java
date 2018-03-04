@@ -1,4 +1,4 @@
-package com.nazar;
+package com.speks.nazar;
 
 import android.app.Application;
 
