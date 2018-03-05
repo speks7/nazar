@@ -148,11 +148,103 @@ class Home extends Component {
               </View>
               <View style={styles.formContainer}>
                 {isAboutPage && (
-                  <Text style={styles.titleText}>
-                    Nazar is an electronic component detection app which allows
-                    the user to identify different e-devices and fetch a feed
-                    from the web to what is might function in real life
-                  </Text>
+                  <View>
+                    <View
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    />
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        marginHorizontal: 40,
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 26,
+                          color: "#00aeefff",
+                          fontFamily: "bold"
+                        }}
+                      >
+                        NAZAR
+                      </Text>
+                      <Text
+                        style={{
+                          flex: 1,
+                          fontSize: 26,
+                          color: "green",
+                          fontFamily: "bold",
+                          textAlign: "right"
+                        }}
+                      >
+                        v1.0.1
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        marginLeft: 20,
+                        marginRight: 20,
+                        marginTop: 10
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          color: "black",
+                          fontFamily: "regular"
+                        }}
+                      >
+                        An electronic component detection app which allows the
+                        user to identify different e-devices using images.
+                      </Text>
+                    </View>
+                    <View style={{ marginTop: 10 }}>
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          color: "rgba(216, 121, 112, 1)",
+                          fontFamily: "regular",
+                          marginLeft: 40
+                        }}
+                      >
+                        INFO
+                      </Text>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          marginTop: 10,
+                          marginHorizontal: 30
+                        }}
+                      >
+                        <View style={{ flex: 1, flexDirection: "row" }}>
+                          <View style={{ flex: 1 }}>
+                            <Text style={styles.infoTypeLabel}>Camera</Text>
+                            <Text style={styles.infoTypeLabel}>Gallery</Text>
+                            <Text style={styles.infoTypeLabel}>Clarifai</Text>
+                            <Text style={styles.infoTypeLabel}>Prediction</Text>
+                          </View>
+                          <View style={{ marginLeft: 10 }}>
+                            <Text style={styles.infoAnswerLabel}>
+                              Take a picture using native camera
+                            </Text>
+                            <Text style={styles.infoAnswerLabel}>
+                              Use already captured images
+                            </Text>
+                            <Text style={styles.infoAnswerLabel}>
+                              Fetch Clarifai API to analyze image
+                            </Text>
+                            <Text style={styles.infoAnswerLabel}>
+                              Show prediction name and value
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
                 )}
                 {isPredictPage && (
                   <Button

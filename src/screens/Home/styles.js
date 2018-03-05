@@ -93,6 +93,18 @@ const styles = StyleSheet.create({
     height: 64,
     alignItems: "center",
     justifyContent: "center"
+  },
+  infoTypeLabel: {
+    fontSize: 15,
+    color: 'rgba(126,123,138,1)',
+    fontFamily: 'regular',
+    paddingBottom: 5,
+  },
+  infoAnswerLabel: {
+    fontSize: 15,
+    color: 'black',
+    fontFamily: 'regular',
+    paddingBottom: 5,
   }
 });
 
