@@ -11,11 +11,13 @@ import {
   Image
 } from "react-native";
 
+import { AdMobBanner } from "react-native-admob";
+
 import { Button, Text } from "react-native-elements";
 
 import PropTypes from "prop-types";
 
-import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from "react-native-splash-screen";
 
 import ImagePicker from "react-native-image-picker";
 
@@ -168,11 +170,20 @@ class Home extends Component {
             </KeyboardAvoidingView>
             <View style={styles.helpContainer}>
               <Button
-                text={"Learn more ?"}
+                text={"©Team Speks"}
                 textStyle={{ color: "white" }}
                 buttonStyle={{ backgroundColor: "transparent" }}
                 underlayColor="transparent"
                 onPress={() => console.log("To github repo")}
+              />
+            </View>
+            <View style={{ height: 50 }}>
+              <AdMobBanner
+                adSize="banner"
+                adUnitID="ca-app-pub-9119188523765586/7283753335"
+                //ref={el => (this._basicExample = el)}
+                //testDevices={[AdMobBanner.simulatorId]}
+                //onAdFailedToLoad={error => console.error(error)}
               />
             </View>
           </View>

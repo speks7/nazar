@@ -9,6 +9,7 @@ import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import cl.json.RNSharePackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
+import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNViewShotPackage(),
             new RNSharePackage(),
             new ImagePickerPackage(),
-            new RNFSPackage()
+            new RNFSPackage(),
+            new RNAdMobPackage()
             //new RNCameraKitPackage()
       );
     }
