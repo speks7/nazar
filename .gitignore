@@ -29,6 +29,8 @@ build/
 .gradle
 local.properties
 *.iml
+android/app/src/main/jniLibs/
+android/openCVLibrary341/
 
 # env files
 .env
