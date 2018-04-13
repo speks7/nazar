@@ -42,6 +42,13 @@ const styles = StyleSheet.create({
     height: 50,
     width: 200
   },
+  loadButton2: {
+    backgroundColor: "rgba(232, 147, 142, 1)",
+    borderRadius: 10,
+    height: 50,
+    width: 200,
+    marginTop: 10
+  },
   titleContainer: {
     height: 280,
     backgroundColor: "transparent",
