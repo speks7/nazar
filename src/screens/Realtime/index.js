@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Dimensions, StyleSheet, Text, View, Image } from "react-native";
+import { ActivityIndicator, Dimensions, StyleSheet, Text, View, Image } from "react-native";
+import PropTypes from "prop-types";
 
 import Clarifai from "clarifai";
 import { CLARIFAY_KEY } from "react-native-dotenv";
@@ -70,7 +71,7 @@ class Realtime extends Component {
   async clearInterval() {
     timer.clearInterval(this);
     this.setState({
-      done: true,
+      loading: true,
       captureText: ""
     });
   }
@@ -105,8 +106,11 @@ class Realtime extends Component {
 
   render() {
     return (
-      <ImageBackground source={{ uri: sourceImage }} style={styles.bgImage}>
-        <StatusBar hidden />
+      <Camera
+        setCam={cam => {
+          this.camera = cam;
+        }}
+      >
         {this.state.loading ? (
           <View style={styles.loader}>
             <ActivityIndicator size={65} color="#00aeefff" />
@@ -148,7 +152,7 @@ class Realtime extends Component {
             />
           </View>
         )}
-      </ImageBackground>
+      </Camera>
     );
   }
 }
