@@ -6,6 +6,7 @@ import com.facebook.react.ReactApplication;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
+import org.reactnative.camera.RNCameraPackage;
 import cl.json.RNSharePackage;
 import com.imagepicker.ImagePickerPackage;
 import com.rnfs.RNFSPackage;
@@ -37,7 +38,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNSharePackage(),
             new ImagePickerPackage(),
             new RNFSPackage(),
-            new RNAdMobPackage()
+            new RNAdMobPackage(),
+            new RNCameraPackage()
             //new RNCameraKitPackage()
       );
     }
