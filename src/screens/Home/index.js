@@ -247,16 +247,28 @@ class Home extends Component {
                   </View>
                 )}
                 {isPredictPage && (
-                  <Button
-                    buttonStyle={styles.loadButton}
-                    containerStyle={{ flex: 0 }}
-                    activeOpacity={0.8}
-                    text={"Analyze an image"}
-                    onPress={this._onClick}
-                    textStyle={styles.loadTextButton}
-                    loading={loading}
-                    disabled={loading}
-                  />
+                  <View>
+                    <Button
+                      buttonStyle={styles.loadButton}
+                      containerStyle={{ flex: 0 }}
+                      activeOpacity={0.8}
+                      text={"Analyze an image"}
+                      onPress={this._onClick}
+                      textStyle={styles.loadTextButton}
+                      loading={loading}
+                      disabled={loading}
+                    />
+                    <Button
+                      buttonStyle={styles.loadButton2}
+                      containerStyle={{ flex: 0 }}
+                      activeOpacity={0.8}
+                      text={"Realtime analysis"}
+                      onPress={this._onClick}
+                      textStyle={styles.loadTextButton}
+                      loading={loading}
+                      disabled={loading}
+                    />
+                  </View>
                 )}
               </View>
             </KeyboardAvoidingView>
