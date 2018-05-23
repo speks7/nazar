@@ -48,6 +48,20 @@ const styles = StyleSheet.create({
     fontFamily: 'bold',
     fontSize: 20,
     color: "white"
+  },
+  wikiLink: {
+    color: 'black', 
+    paddingLeft: 15,               
+  },
+  googleLink: {
+      color: '#d62d20',
+      paddingLeft: 22,       
+  },
+  linkContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    paddingTop: 25,
+    paddingBottom: 5,
   }
 });
 

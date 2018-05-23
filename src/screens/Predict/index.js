@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import { ActivityIndicator, View, StatusBar, Alert, ImageBackground } from "react-native";
+import {
+  ActivityIndicator,
+  View,
+  StatusBar,
+  Alert,
+  ImageBackground,
+  Linking
+} from "react-native";
 import PropTypes from "prop-types";
 import { NavigationActions } from "react-navigation";
 
-import { Button, Text } from "react-native-elements";
+import { Button, Text, Icon } from "react-native-elements";
 
 import Clarifai from "clarifai";
 
-import { CLARIFAY_KEY } from 'react-native-dotenv';
+import { CLARIFAY_KEY } from "react-native-dotenv";
 
 import Notif from "../../components/Notif";
 
@@ -44,15 +51,19 @@ class Predict extends Component {
       .predict(Clarifai.GENERAL_MODEL, file)
       .then(response => {
         const { concepts } = response.outputs[0].data;
-        
+
         if (concepts && concepts.length > 0) {
           for (const prediction of concepts) {
-              return this.setState({ loading: false, result: prediction.name, value: prediction.value });
+            return this.setState({
+              loading: false,
+              result: prediction.name,
+              value: prediction.value
+            });
           }
         }
       })
       .catch(err => alert(err));
-      /*
+    /*
       .catch(e => {
         Alert.alert(
           "An error has occurred",
@@ -83,6 +94,30 @@ class Predict extends Component {
         ) : (
           <View style={styles.container}>
             <Notif answer={this.state.result} value={this.state.value} />
+            <View style={styles.linkContainer}>
+              <Icon
+                iconStyle={styles.googleLink}
+                type="font-awesome"
+                name="google"
+                onPress={() =>
+                  Linking.openURL(
+                    `https://www.google.com/search?q=${this.state.result}`
+                  )
+                }
+              />
+              <Icon
+                iconStyle={styles.wikiLink}
+                type="font-awesome"
+                name="wikipedia-w"
+                onPress={() =>
+                  Linking.openURL(
+                    `https://en.m.wikipedia.org/w/index.php?search=${
+                      this.state.result
+                    }&title=Special:Search&fulltext=1`
+                  )
+                }
+              />
+            </View>
             <Button
               text="Revert"
               containerStyle={{ flex: -1 }}
