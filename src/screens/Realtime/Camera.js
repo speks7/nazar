@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import Camera from "react-native-camera";
+import { RNCamera } from "react-native-camera";
 
 import { StatusBar, View, StyleSheet, Dimensions } from "react-native";
 
@@ -8,16 +8,14 @@ export default class MyCamera extends PureComponent<void, *, void> {
     return (
       <View style={styles.container}>
         <StatusBar hidden />
-        <Camera
+        <RNCamera
           ref={cam => {
             this.props.setCam(cam);
           }}
-          captureQuality={Camera.constants.CaptureQuality["480p"]}
-          captureTarget={Camera.constants.CaptureTarget.memory}
           playSoundOnCapture={false}
           jpegQuality={40}
           style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}
+          type={RNCamera.Constants.Type.back}
         />
         {this.props.children}
       </View>

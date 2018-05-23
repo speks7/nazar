@@ -1,6 +1,14 @@
 import React, { Component } from "react";
-import { ActivityIndicator, Dimensions, StyleSheet, Text, View, Image } from "react-native";
+import {
+  ActivityIndicator,
+  Dimensions,
+  StyleSheet,
+  View,
+  Image
+} from "react-native";
 import PropTypes from "prop-types";
+import { Button, Text, Icon } from "react-native-elements";
+import { NavigationActions } from "react-navigation";
 
 import Clarifai from "clarifai";
 import { CLARIFAY_KEY } from "react-native-dotenv";
@@ -8,6 +16,7 @@ import timer from "react-native-timer";
 
 import Camera from "./Camera";
 import styles from "./styles";
+import Notif from "../../components/Notif";
 
 class Realtime extends Component {
   static navigationOptions = {
@@ -79,8 +88,9 @@ class Realtime extends Component {
 
   async takePicture() {
     const self = this;
-    const image64 = await this.camera.capture();
-    const file = image64.data;
+    const options = { quality: 0.5, base64: true };
+    const data = await this.camera.takePictureAsync(options);
+    const file = data.uri;
 
     clarifai.models
       .predict(Clarifai.GENERAL_MODEL, file)
@@ -112,46 +122,40 @@ class Realtime extends Component {
           this.camera = cam;
         }}
       >
-        {this.state.loading ? (
-          <View style={styles.loader}>
-            <ActivityIndicator size={65} color="#00aeefff" />
-            <Text style={styles.loaderText}>Analysis in progress...</Text>
-          </View>
-        ) : (
-          <View style={styles.container}>
-            <Notif answer={this.state.result} value={this.state.value} />
-            <View style={styles.linkContainer}>
-              <Icon
-                iconStyle={styles.googleLink}
-                type="font-awesome"
-                name="google"
-                onPress={() =>
-                  Linking.openURL(
-                    `https://www.google.com/search?q=${this.state.result}`
-                  )
-                }
-              />
-              <Icon
-                iconStyle={styles.wikiLink}
-                type="font-awesome"
-                name="wikipedia-w"
-                onPress={() =>
-                  Linking.openURL(
-                    `https://en.m.wikipedia.org/w/index.php?search=${
-                      this.state.result
-                    }&title=Special:Search&fulltext=1`
-                  )
-                }
-              />
-            </View>
-            <Button
-              text="Revert"
-              containerStyle={{ flex: -1 }}
-              buttonStyle={styles.Button}
-              textStyle={styles.ButtonText}
-              onPress={this._cancel}
+        <View style={styles.container}>
+          <Notif answer={this.state.result} value={this.state.value} />
+          <View style={styles.linkContainer}>
+            <Icon
+              iconStyle={styles.googleLink}
+              type="font-awesome"
+              name="google"
+              onPress={() =>
+                Linking.openURL(
+                  `https://www.google.com/search?q=${this.state.result}`
+                )
+              }
+            />
+            <Icon
+              iconStyle={styles.wikiLink}
+              type="font-awesome"
+              name="wikipedia-w"
+              onPress={() =>
+                Linking.openURL(
+                  `https://en.m.wikipedia.org/w/index.php?search=${
+                    this.state.result
+                  }&title=Special:Search&fulltext=1`
+                )
+              }
             />
           </View>
+          <Button
+            text="Revert"
+            containerStyle={{ flex: -1 }}
+            buttonStyle={styles.Button}
+            textStyle={styles.ButtonText}
+            onPress={this._cancel}
+          />
+        </View>
         )}
       </Camera>
     );
