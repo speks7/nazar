@@ -94,6 +94,13 @@ class Home extends Component {
     });
   }
 
+  _onClick2() {
+    this.setState({ loading: true });
+    const { navigate } = this.props.navigation;
+    navigate("Realtime");
+    this.setState({ loading: false });
+  }
+
   selectCategory(selectedCategory) {
     LayoutAnimation.easeInEaseOut();
     this.setState({
@@ -263,7 +270,7 @@ class Home extends Component {
                       containerStyle={{ flex: 0 }}
                       activeOpacity={0.8}
                       text={"Realtime analysis"}
-                      onPress={this._onClick}
+                      onPress={this._onClick2}
                       textStyle={styles.loadTextButton}
                       loading={loading}
                       disabled={loading}
