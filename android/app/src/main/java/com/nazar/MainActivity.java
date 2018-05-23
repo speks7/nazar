@@ -2,7 +2,7 @@ package com.speks.nazar;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
-import com.google.android.gms.ads.MobileAds;
+//import com.google.android.gms.ads.MobileAds;
 
 public class MainActivity extends ReactActivity {
 

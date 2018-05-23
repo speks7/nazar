@@ -11,7 +11,7 @@ import {
   Image
 } from "react-native";
 
-import { AdMobBanner } from "react-native-admob";
+//import { AdMobBanner } from "react-native-admob";
 
 import { Button, Text } from "react-native-elements";
 
@@ -281,15 +281,6 @@ class Home extends Component {
                 onPress={() => console.log("To github repo")}
               />
             </View>
-            <View style={{ height: 50 }}>
-              <AdMobBanner
-                adSize="banner"
-                adUnitID="ca-app-pub-9119188523765586/7283753335"
-                //ref={el => (this._basicExample = el)}
-                //testDevices={[AdMobBanner.simulatorId]}
-                //onAdFailedToLoad={error => console.error(error)}
-              />
-            </View>
           </View>
         </ImageBackground>
       </View>
@@ -302,3 +293,15 @@ Home.propTypes = {
 };
 
 export default Home;
+
+/*
+            <View style={{ height: 50 }}>
+              <AdMobBanner
+                adSize="banner"
+                adUnitID="ca-app-pub-9119188523765586/7283753335"
+                //ref={el => (this._basicExample = el)}
+                //testDevices={[AdMobBanner.simulatorId]}
+                //onAdFailedToLoad={error => console.error(error)}
+              />
+            </View>
+*/
