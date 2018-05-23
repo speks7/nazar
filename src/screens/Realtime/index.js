@@ -7,6 +7,7 @@ import { CLARIFAY_KEY } from "react-native-dotenv";
 import timer from "react-native-timer";
 
 import Camera from "./Camera";
+import styles from "./styles";
 
 class Realtime extends Component {
   static navigationOptions = {

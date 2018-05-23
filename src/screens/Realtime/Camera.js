@@ -3,7 +3,7 @@ import Camera from "react-native-camera";
 
 import { StatusBar, View, StyleSheet, Dimensions } from "react-native";
 
-export default class MyCamera {
+export default class MyCamera extends PureComponent<void, *, void> {
   render() {
     return (
       <View style={styles.container}>
