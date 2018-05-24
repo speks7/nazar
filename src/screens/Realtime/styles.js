@@ -9,10 +9,43 @@ const SCREEN_HEIGHT = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'transparent',
     alignSelf: "stretch",
     justifyContent: "flex-end",
     alignItems: "center",
     alignContent: "center"
+  },
+  cameraOptionsHeader: {
+    flexDirection: 'row',
+    height: 80,
+    zIndex: 100,
+    position: 'absolute',
+    top: 0,
+    justifyContent: 'space-between',
+    paddingTop: 30,
+    paddingLeft: 15,
+    paddingRight: 15,
+    width: '100%',
+  },
+  flashOptionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 5
+  },
+  flashOptionsText: {
+    fontSize: 14,
+    fontWeight: '700'
+  },
+  flashIcon: {
+    fontSize: 30,
+    color: 'white',
+  },
+  preview: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT
   },
   loader: {
     position: "absolute",

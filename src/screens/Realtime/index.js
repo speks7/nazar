@@ -1,169 +1,195 @@
-import React, { Component } from "react";
+'use strict';
+import React, { Component } from 'react';
 import {
-  ActivityIndicator,
+  AppRegistry,
   Dimensions,
   StyleSheet,
-  View,
-  Image
-} from "react-native";
-import PropTypes from "prop-types";
-import { Button, Text, Icon } from "react-native-elements";
-import { NavigationActions } from "react-navigation";
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import { RNCamera } from 'react-native-camera';
+import { Icon } from 'react-native-elements';
 
-import Clarifai from "clarifai";
-import { CLARIFAY_KEY } from "react-native-dotenv";
-import timer from "react-native-timer";
-
-import Camera from "./Camera";
-import styles from "./styles";
-import Notif from "../../components/Notif";
-
-class Realtime extends Component<void, *, void> {
-  static navigationOptions = {
+export default class Realtime extends Component {
+  static navigationOptions = ({navigation}) => ({
     header: null
-  };
+  });
+
   constructor(props) {
     super(props);
-
+    let selected = false;
     this.state = {
-      result: "",
-      value: null
-    };
-
-    this._cancel = this._cancel.bind(this);
-    this.takePicture = this.takePicture.bind(this);
-    timer.setInterval(this, "takePicture", () => this.takePicture(), 1000);
-    timer.setInterval(this, "clearInterval", () => this.clearInterval(), 30000);
+      flashMode: RNCamera.Constants.FlashMode.auto,
+      flash: 'auto',
+      showFlashOptions: false,
+      type: RNCamera.Constants.Type.back
+    }
+    //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
+    this.goBack = this.goBack.bind(this);
+    this.selectFlashMode = this.selectFlashMode.bind(this);
+    this.showFlashOptionsBlock = this.showFlashOptionsBlock.bind(this);
+    this.switchCamera = this.switchCamera.bind(this);
   }
 
-  componentDidMount() {
-    const clarifai = new Clarifai.App({
-      apiKey: CLARIFAY_KEY //dummy
-    });
+  takePicture = async function() {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options)
+      console.log(data.uri);
+      //this.props.navigation.navigate('CameraPreview', {'imageData': data, 'alreadySelectedImages': this.alreadySelectedImages});
+    }
+  };
 
-    process.nextTick = setImmediate; // RN polyfill
+  goBack() {
+    this.props.navigation.goBack();
+  }
 
-    /*const { data } = this.props.navigation.state.params.image;
-    const file = { base64: data };
-
-    clarifai.models
-      .predict(Clarifai.GENERAL_MODEL, file)
-      .then(response => {
-        const { concepts } = response.outputs[0].data;
-
-        if (concepts && concepts.length > 0) {
-          for (const prediction of concepts) {
-            return this.setState({
-              loading: false,
-              result: prediction.name,
-              value: prediction.value
-            });
-          }
-        }
+  selectFlashMode(type) {
+    if (type === 'auto') {
+      this.setState({
+        flashMode: RNCamera.Constants.FlashMode.auto,
+        flash: 'auto',
+        showFlashOptions: false
       })
-      .catch(err => alert(err));*/
-    /*
-      .catch(e => {
-        Alert.alert(
-          "An error has occurred",
-          "Sorry, the quota may be exceeded, try again later!",
-          [{ text: "OK", onPress: () => this._cancel() }],
-          { cancelable: false }
-        );
-      });*/
+    } else if (type === 'off'){
+      this.setState({
+        flashMode: RNCamera.Constants.FlashMode.off,
+        flash: 'off',
+        showFlashOptions: false
+      })
+    } else {
+      this.setState({
+        flashMode: RNCamera.Constants.FlashMode.on,
+        flash: 'on',
+        showFlashOptions: false
+      })
+    }
   }
 
-  componentWillUnmount() {
-    timer.clearInterval(this);
-  }
-
-  async clearInterval() {
-    timer.clearInterval(this);
+  showFlashOptionsBlock() {
     this.setState({
-      loading: true,
-      captureText: ""
-    });
+      showFlashOptions: true
+    })
   }
 
-  async takePicture() {
-    const self = this;
-    const options = { quality: 0.5, base64: true };
-    const datas = await this.camera.takePictureAsync(options);
-    const file = datas.uri;
-    const data = datas.uri;
-
-    clarifai.models
-      .predict(Clarifai.GENERAL_MODEL, file)
-      .then(response => {
-        const { concepts } = response.outputs[0].data;
-
-        if (concepts && concepts.length > 0) {
-          for (const prediction of concepts) {
-            return this.setState({
-              loading: false,
-              result: prediction.name,
-              value: prediction.value
-            });
-          }
-        }
+  switchCamera() {
+    if (this.state.type === RNCamera.Constants.Type.back) {
+      this.setState({
+        type: RNCamera.Constants.Type.front
       })
-      .catch(err => alert(err));
-  }
-
-  _cancel() {
-    const backAction = NavigationActions.back();
-    this.props.navigation.dispatch(backAction);
+    } else {
+      this.setState({
+        type: RNCamera.Constants.Type.back
+      })
+    }
   }
 
   render() {
+    let autoColor = this.state.flash === 'auto' ? 'yellow': 'white';
+    let onColor = this.state.flash === 'on' ? 'yellow': 'white';
+    let offColor = this.state.flash === 'off' ? 'yellow': 'white';
     return (
-      <Camera
-        setCam={cam => {
-          this.camera = cam;
-        }}
-      >
-        <View style={styles.container}>
-          <Notif answer={this.state.result} value={this.state.value} />
-          <View style={styles.linkContainer}>
-            <Icon
-              iconStyle={styles.googleLink}
-              type="font-awesome"
-              name="google"
-              onPress={() =>
-                Linking.openURL(
-                  `https://www.google.com/search?q=${this.state.result}`
-                )
-              }
-            />
-            <Icon
-              iconStyle={styles.wikiLink}
-              type="font-awesome"
-              name="wikipedia-w"
-              onPress={() =>
-                Linking.openURL(
-                  `https://en.m.wikipedia.org/w/index.php?search=${
-                    this.state.result
-                  }&title=Special:Search&fulltext=1`
-                )
-              }
-            />
-          </View>
-          <Button
-            text="Revert"
-            containerStyle={{ flex: -1 }}
-            buttonStyle={styles.Button}
-            textStyle={styles.ButtonText}
-            onPress={this._cancel}
-          />
+      <View style={styles.container}>
+        <View style={styles.cameraOptionsHeader}>
+          <TouchableOpacity onPress={this.goBack}>
+              <Icon style={styles.backButton} name="arrow-back" />
+          </TouchableOpacity>
+          {this.state.showFlashOptions ?
+            <View style={styles.flashOptionsContainer}>
+              <TouchableOpacity  style={{paddingRight: 5}} onPress={() => this.selectFlashMode('auto')}>
+                <Text style={[{color: autoColor},styles.flashOptionsText]}>Auto</Text>
+              </TouchableOpacity>
+              <TouchableOpacity  style={{paddingRight: 5}} onPress={() => this.selectFlashMode('on')}>
+                <Text style={[{color: onColor},styles.flashOptionsText]}>On</Text>
+              </TouchableOpacity>
+              <TouchableOpacity  style={{paddingRight: 5}} onPress={() => this.selectFlashMode('off')}>
+                <Text style={[{color: offColor},styles.flashOptionsText]}>Off</Text>
+              </TouchableOpacity>
+            </View> :
+            <TouchableOpacity onPress={this.showFlashOptionsBlock}>
+              <Icon style={styles.flashIcon} type="MaterialIcons" name={this.state.flash === 'auto' ? 'flash-auto': this.state.flash === 'on' ? 'flash-on': 'flash-off'} />
+            </TouchableOpacity>
+          }
         </View>
-        )}
-      </Camera>
+        <RNCamera
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style = {styles.preview}
+            type={this.state.type}
+            flashMode={this.state.flashMode}
+            mirrorImage={true}
+            permissionDialogTitle={'Permission to use camera'}
+            permissionDialogMessage={'We need your permission to use your camera phone'}
+        />
+      <View style={styles.cameraClickBlock}>
+        <View style={{flex: 1}}>
+        </View>
+        <TouchableOpacity style={{flex: 1,flexDirection: 'row', justifyContent: 'center'}}
+            onPress={this.takePicture.bind(this)}>
+            <Icon style={styles.cameraIcon} type="FontAwesome" name="camera" />
+        </TouchableOpacity>
+        <TouchableOpacity style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}
+            onPress={this.switchCamera}>
+            <Icon style={styles.cameraIcon} type="Ionicons" name="reverse-camera" />
+        </TouchableOpacity>
+        </View>
+      </View>
     );
   }
+
+
 }
 
-Realtime.propTypes = {
-  navigation: PropTypes.object
-};
-
-export default Realtime;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'transparent'
+  },
+  cameraOptionsHeader: {
+    flexDirection: 'row',
+    height: 80,
+    zIndex: 100,
+    position: 'absolute',
+    top: 0,
+    justifyContent: 'space-between',
+    paddingTop: 30,
+    paddingLeft: 15,
+    paddingRight: 15,
+    width: '100%',
+  },
+  backButton: {
+    fontSize: 40,
+    color: 'white',
+  },
+  flashIcon: {
+    fontSize: 30,
+    color: 'white',
+  },
+  preview: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  cameraClickBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    bottom: 5,
+    position: 'absolute',
+    paddingRight: 15
+  },
+  cameraIcon: {
+    fontSize: 45,
+    color: 'white',
+  },
+  flashOptionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 5
+  },
+  flashOptionsText: {
+    fontSize: 14,
+    fontWeight: '700'
+  },
+})
