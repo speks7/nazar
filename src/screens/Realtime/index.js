@@ -1,15 +1,17 @@
 "use strict";
 import React, { Component } from "react";
 import {
+  Animated,
   AppRegistry,
   Dimensions,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View
+  Linking,
+  View,
+  ScrollView
 } from "react-native";
 import { RNCamera } from "react-native-camera";
-import { Icon } from "react-native-elements";
+import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 
 import Clarifai from "clarifai";
@@ -26,8 +28,8 @@ export default class Realtime extends Component {
     super(props);
     let selected = false;
     this.state = {
-      result: "",
-      value: null,
+      result: "Aloo",
+      value: 99,
       flashMode: RNCamera.Constants.FlashMode.auto,
       flash: "auto",
       showFlashOptions: false,
@@ -40,7 +42,12 @@ export default class Realtime extends Component {
     this.showFlashOptionsBlock = this.showFlashOptionsBlock.bind(this);
     this.switchCamera = this.switchCamera.bind(this);
     timer.setInterval(this, "takePicture", () => this.takePicture(), 5000000);
-    timer.setInterval(this, "clearInterval", () => this.clearInterval(), 5000000);
+    timer.setInterval(
+      this,
+      "clearInterval",
+      () => this.clearInterval(),
+      5000000
+    );
   }
 
   componentDidMount() {
@@ -82,7 +89,8 @@ export default class Realtime extends Component {
   async clearInterval() {
     timer.clearInterval(this);
     this.setState({
-      captureText: ""
+      result: "",
+      value: ""
     });
   }
 
@@ -198,32 +206,54 @@ export default class Realtime extends Component {
         />
         <View style={styles.cameraClickBlock}>
           <View style={{ flex: 1 }} />
-          <TouchableOpacity
-            style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
-          >
-            <Icon
-              iconStyle={styles.googleLink}
-              type="font-awesome"
-              name="google"
-              onPress={() =>
-                Linking.openURL(
-                  `https://www.google.com/search?q=${this.state.result}`
-                )
-              }
-            />
-            <Icon
-              iconStyle={styles.wikiLink}
-              type="font-awesome"
-              name="wikipedia-w"
-              onPress={() =>
-                Linking.openURL(
-                  `https://en.m.wikipedia.org/w/index.php?search=${
-                    this.state.result
-                  }&title=Special:Search&fulltext=1`
-                )
-              }
-            />
-          </TouchableOpacity>
+          <Animated.View style={[styles.animator]}>
+            <ScrollView style={{ height: 100 }}>
+              <Text
+                style={{
+                  fontSize: 26,
+                  color: "#fff",
+                  fontFamily: "bold",
+                  textAlign: 'center',
+                  marginTop: 10
+                }}
+              >
+                {this.state.result}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 22,
+                  color: "#fff",
+                  fontFamily: "bold",
+                  textAlign: 'center',
+                  marginTop: 10
+                }}
+              >
+                {this.state.value}
+              </Text>
+            </ScrollView>
+          </Animated.View>
+          <Icon
+            iconStyle={styles.googleLink}
+            type="font-awesome"
+            name="google"
+            onPress={() =>
+              Linking.openURL(
+                `https://www.google.com/search?q=${this.state.result}`
+              )
+            }
+          />
+          <Icon
+            iconStyle={styles.wikiLink}
+            type="font-awesome"
+            name="wikipedia-w"
+            onPress={() =>
+              Linking.openURL(
+                `https://en.m.wikipedia.org/w/index.php?search=${
+                  this.state.result
+                }&title=Special:Search&fulltext=1`
+              )
+            }
+          />
           <TouchableOpacity
             style={{
               flex: 1,

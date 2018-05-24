@@ -59,6 +59,16 @@ const styles = StyleSheet.create({
     fontSize: 45,
     color: 'white',
   },
+  animator: {
+    position: 'absolute',
+    opacity: 0.6,
+    backgroundColor: '#263238',
+    borderWidth: 1,
+    borderColor: '#00aeefff',
+    bottom: 80,
+    left: 12,
+    right: 12,
+  },
   loader: {
     position: "absolute",
     top: 0,
