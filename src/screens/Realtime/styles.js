@@ -10,10 +10,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    alignSelf: "stretch",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    alignContent: "center"
   },
   cameraOptionsHeader: {
     flexDirection: 'row',
@@ -26,6 +22,10 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     width: '100%',
+  },
+  backButton: {
+    fontSize: 40,
+    color: 'white',
   },
   flashOptionsContainer: {
     flexDirection: 'row',
@@ -42,10 +42,22 @@ const styles = StyleSheet.create({
   },
   preview: {
     flex: 1,
-    justifyContent: "flex-end",
+    //justifyContent: "flex-end",
     alignItems: "center",
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT
+    //width: SCREEN_WIDTH,
+    //height: SCREEN_HEIGHT
+  },
+  cameraClickBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    bottom: 5,
+    position: 'absolute',
+    paddingRight: 15
+  },
+  cameraIcon: {
+    fontSize: 45,
+    color: 'white',
   },
   loader: {
     position: "absolute",
