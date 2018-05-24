@@ -18,7 +18,7 @@ import Camera from "./Camera";
 import styles from "./styles";
 import Notif from "../../components/Notif";
 
-class Realtime extends Component {
+class Realtime extends Component<void, *, void> {
   static navigationOptions = {
     header: null
   };
@@ -26,7 +26,6 @@ class Realtime extends Component {
     super(props);
 
     this.state = {
-      loading: true,
       result: "",
       value: null
     };
@@ -89,8 +88,9 @@ class Realtime extends Component {
   async takePicture() {
     const self = this;
     const options = { quality: 0.5, base64: true };
-    const data = await this.camera.takePictureAsync(options);
-    const file = data.uri;
+    const datas = await this.camera.takePictureAsync(options);
+    const file = datas.uri;
+    const data = datas.uri;
 
     clarifai.models
       .predict(Clarifai.GENERAL_MODEL, file)

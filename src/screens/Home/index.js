@@ -55,6 +55,7 @@ class Home extends Component {
     };
 
     this._onClick = this._onClick.bind(this);
+    this._onClick2 = this._onClick2.bind(this);
     this.selectCategory = this.selectCategory.bind(this);
 
     this.options = {
@@ -94,9 +95,9 @@ class Home extends Component {
     });
   }
 
-  /*_onClick2() {
+  _onClick2() {
     this.props.navigation.navigate("Realtime");
-  }*/
+  }
 
   selectCategory(selectedCategory) {
     LayoutAnimation.easeInEaseOut();
@@ -267,7 +268,7 @@ class Home extends Component {
                       containerStyle={{ flex: 0 }}
                       activeOpacity={0.8}
                       text={"Realtime analysis"}
-                      onPress= {this.props.navigation.navigate("Realtime")}
+                      onPress= {this._onClick2}
                       textStyle={styles.loadTextButton}
                       loading={loading}
                       disabled={loading}
