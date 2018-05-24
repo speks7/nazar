@@ -10,6 +10,10 @@ import {
 } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { Icon } from "react-native-elements";
+import timer from "react-native-timer";
+
+import Clarifai from "clarifai";
+import { CLARIFAY_KEY } from "react-native-dotenv";
 
 import styles from "./styles";
 
@@ -22,6 +26,8 @@ export default class Realtime extends Component {
     super(props);
     let selected = false;
     this.state = {
+      result: "",
+      value: null,
       flashMode: RNCamera.Constants.FlashMode.auto,
       flash: "auto",
       showFlashOptions: false,
@@ -29,9 +35,20 @@ export default class Realtime extends Component {
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
+    this.takePicture = this.takePicture.bind(this);
     this.selectFlashMode = this.selectFlashMode.bind(this);
     this.showFlashOptionsBlock = this.showFlashOptionsBlock.bind(this);
     this.switchCamera = this.switchCamera.bind(this);
+    timer.setInterval(this, "takePicture", () => this.takePicture(), 5000000);
+    timer.setInterval(this, "clearInterval", () => this.clearInterval(), 5000000);
+  }
+
+  componentDidMount() {
+    const clarifai = new Clarifai.App({
+      apiKey: CLARIFAY_KEY //dummy
+    });
+
+    process.nextTick = setImmediate; // RN polyfill
   }
 
   takePicture = async function() {
@@ -39,9 +56,35 @@ export default class Realtime extends Component {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
+      clarifai.models
+        .predict(Clarifai.GENERAL_MODEL, data.base64)
+        .then(response => {
+          const { concepts } = response.outputs[0].data.uri;
+
+          if (concepts && concepts.length > 0) {
+            for (const prediction of concepts) {
+              this.setState({
+                result: prediction.name,
+                value: prediction.value
+              });
+            }
+          }
+        })
+        .catch(err => alert(err));
       //this.props.navigation.navigate('CameraPreview', {'imageData': data, 'alreadySelectedImages': this.alreadySelectedImages});
     }
   };
+
+  componentWillUnmount() {
+    timer.clearInterval(this);
+  }
+
+  async clearInterval() {
+    timer.clearInterval(this);
+    this.setState({
+      captureText: ""
+    });
+  }
 
   goBack() {
     this.props.navigation.goBack();
@@ -157,9 +200,29 @@ export default class Realtime extends Component {
           <View style={{ flex: 1 }} />
           <TouchableOpacity
             style={{ flex: 1, flexDirection: "row", justifyContent: "center" }}
-            onPress={this.takePicture.bind(this)}
           >
-            <Icon iconStyle={styles.cameraIcon} type="FontAwesome" name="camera" />
+            <Icon
+              iconStyle={styles.googleLink}
+              type="font-awesome"
+              name="google"
+              onPress={() =>
+                Linking.openURL(
+                  `https://www.google.com/search?q=${this.state.result}`
+                )
+              }
+            />
+            <Icon
+              iconStyle={styles.wikiLink}
+              type="font-awesome"
+              name="wikipedia-w"
+              onPress={() =>
+                Linking.openURL(
+                  `https://en.m.wikipedia.org/w/index.php?search=${
+                    this.state.result
+                  }&title=Special:Search&fulltext=1`
+                )
+              }
+            />
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -169,10 +232,7 @@ export default class Realtime extends Component {
             }}
             onPress={this.switchCamera}
           >
-            <Icon
-              iconStyle={styles.cameraIcon}
-              name="switch-camera"
-            />
+            <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
       </View>
