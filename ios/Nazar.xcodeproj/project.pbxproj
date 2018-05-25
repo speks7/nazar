@@ -57,6 +57,7 @@
 		5B2A3091ABA944A995F084DE /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45348BFF3A1F496B956A8978 /* libSplashScreen.a */; };
 		C4111C71CEEF4262A45FD1E1 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C941194D6845E585B096C6 /* libRNAdMobManager.a */; };
 		ECD73D840AB245CBBA45B504 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0DA7FAAF748B7ABBF148B /* libRNCamera.a */; };
+		EBA7F5A08B894F5C93085350 /* libRNTensorflow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883F3BDF5105480CA5B0905F /* libRNTensorflow.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -391,6 +392,8 @@
 		27C941194D6845E585B096C6 /* libRNAdMobManager.a */ = {isa = PBXFileReference; name = "libRNAdMobManager.a"; path = "libRNAdMobManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		C79F98F0160B43EDBE21195A /* RNCamera.xcodeproj */ = {isa = PBXFileReference; name = "RNCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		51F0DA7FAAF748B7ABBF148B /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		8AABABCB82C64B75AF003560 /* RNTensorflow.xcodeproj */ = {isa = PBXFileReference; name = "RNTensorflow.xcodeproj"; path = "../node_modules/react-native-tensorflow/ios/RNTensorflow.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		883F3BDF5105480CA5B0905F /* libRNTensorflow.a */ = {isa = PBXFileReference; name = "libRNTensorflow.a"; path = "libRNTensorflow.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +431,7 @@
 				5B2A3091ABA944A995F084DE /* libSplashScreen.a in Frameworks */,
 				C4111C71CEEF4262A45FD1E1 /* libRNAdMobManager.a in Frameworks */,
 				ECD73D840AB245CBBA45B504 /* libRNCamera.a in Frameworks */,
+				EBA7F5A08B894F5C93085350 /* libRNTensorflow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +627,7 @@
 				AA479826F4584FF8ADF831F7 /* SplashScreen.xcodeproj */,
 				A2527A24815242949852221E /* RNAdMobManager.xcodeproj */,
 				C79F98F0160B43EDBE21195A /* RNCamera.xcodeproj */,
+				8AABABCB82C64B75AF003560 /* RNTensorflow.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1289,6 +1294,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1301,6 +1307,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Debug;
@@ -1330,6 +1337,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1342,6 +1350,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Release;
@@ -1372,6 +1381,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Debug;
@@ -1401,6 +1411,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Release;
@@ -1439,6 +1450,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1451,6 +1463,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Debug;
@@ -1489,6 +1502,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1501,6 +1515,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Release;
@@ -1538,6 +1553,11 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Debug;
@@ -1575,6 +1595,11 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 			};
 			name = Release;
