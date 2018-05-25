@@ -16,6 +16,7 @@ import timer from "react-native-timer";
 
 import Clarifai from "clarifai";
 import { CLARIFAY_KEY } from "react-native-dotenv";
+import { TfImageRecognition } from 'react-native-tensorflow'
 
 import styles from "./styles";
 
@@ -26,10 +27,10 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    let selected = false;
+    this.image = require('../../../assets/dumbbell.jpg');
     this.state = {
-      result: "Aloo",
-      value: 99,
+      result: "",
+      value: null,
       flashMode: RNCamera.Constants.FlashMode.auto,
       flash: "auto",
       showFlashOptions: false,
@@ -51,17 +52,53 @@ export default class Realtime extends Component {
   }
 
   componentDidMount() {
+    /*
     const clarifai = new Clarifai.App({
       apiKey: CLARIFAY_KEY //dummy
     });
-
+    */
     process.nextTick = setImmediate; // RN polyfill
+  }
+
+  async _reg (img) {
+    var preder = null
+    try {
+      const tfImageRecognition = new TfImageRecognition({
+          model:require('../../../assets/tensorflow_inception_graph.pb'),
+          labels:require('../../../assets/tensorflow_labels.txt')
+      })
+
+      const results = await tfImageRecognition.recognize({
+          image: img//this.image
+      })
+
+      // const resultText = `Name: ${results[0].name} - Confidence: ${results[0].confidence}`
+
+      const items = results.map(item => {return item.name}).join('、')
+      const resultText = `Found: ${items}`
+
+      results.forEach(result =>
+        preder = result.confidence
+      )
+
+      await tfImageRecognition.close()
+
+      this.setState({
+        result: resultText,
+        value: preder
+      });
+
+    } catch(err) {
+        alert(err)
+    }
   }
 
   takePicture = async function() {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
+      this._reg(data.uri.replace("file:///", ''))
+      /*
       console.log(data.uri);
       clarifai.models
         .predict(Clarifai.GENERAL_MODEL, data.base64)
@@ -77,7 +114,7 @@ export default class Realtime extends Component {
             }
           }
         })
-        .catch(err => alert(err));
+        .catch(err => alert(err));*/
       //this.props.navigation.navigate('CameraPreview', {'imageData': data, 'alreadySelectedImages': this.alreadySelectedImages});
     }
   };
