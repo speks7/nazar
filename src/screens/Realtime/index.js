@@ -29,7 +29,7 @@ export default class Realtime extends Component {
     super(props);
     this.image = require("../../../assets/dumbbell.jpg");
     this.state = {
-      result: "",
+      result: "Detected item",
       value: null,
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
@@ -78,7 +78,7 @@ export default class Realtime extends Component {
 
       this.setState({
         result: items,
-        value: preder
+        value: preder * 100 + "%"
       });
     } catch (err) {
       alert(err);
