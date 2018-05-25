@@ -16,7 +16,7 @@ import timer from "react-native-timer";
 
 import Clarifai from "clarifai";
 import { CLARIFAY_KEY } from "react-native-dotenv";
-import { TfImageRecognition } from 'react-native-tensorflow'
+import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
 
@@ -27,7 +27,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require('../../../assets/dumbbell.jpg');
+    this.image = require("../../../assets/dumbbell.jpg");
     this.state = {
       result: "",
       value: null,
@@ -42,13 +42,8 @@ export default class Realtime extends Component {
     this.selectFlashMode = this.selectFlashMode.bind(this);
     this.showFlashOptionsBlock = this.showFlashOptionsBlock.bind(this);
     this.switchCamera = this.switchCamera.bind(this);
-    timer.setInterval(this, "takePicture", () => this.takePicture(), 5000000);
-    timer.setInterval(
-      this,
-      "clearInterval",
-      () => this.clearInterval(),
-      5000000
-    );
+    timer.setInterval(this, "takePicture", () => this.takePicture(), 1000);
+    timer.setInterval(this, "clearInterval", () => this.clearInterval(), 30000);
   }
 
   componentDidMount() {
@@ -60,36 +55,39 @@ export default class Realtime extends Component {
     process.nextTick = setImmediate; // RN polyfill
   }
 
-  async _reg (img) {
-    var preder = null
+  async _reg(img) {
+    var preder = null;
     try {
       const tfImageRecognition = new TfImageRecognition({
-          model:require('../../../assets/tensorflow_inception_graph.pb'),
-          labels:require('../../../assets/tensorflow_labels.txt')
-      })
+        model: require("../../../assets/tensorflow_inception_graph.pb"),
+        labels: require("../../../assets/tensorflow_labels.txt")
+      });
 
       const results = await tfImageRecognition.recognize({
-          image: img//this.image
-      })
+        image: img //this.image
+      });
 
       // const resultText = `Name: ${results[0].name} - Confidence: ${results[0].confidence}`
 
-      const items = results.map(item => {return item.name}).join('、')
-      const resultText = `Found: ${items}`
+      const items = results
+        .map(item => {
+          return item.name;
+        })
+        .join("、");
+      const resultText = `Found: ${items}`;
 
-      results.forEach(result =>
-        preder = result.confidence
-      )
+      results.forEach(result => (preder = result.confidence));
 
-      await tfImageRecognition.close()
+      await tfImageRecognition.close();
 
       this.setState({
         result: resultText,
         value: preder
       });
 
-    } catch(err) {
-        alert(err)
+      return resultText;
+    } catch (err) {
+      alert(err);
     }
   }
 
@@ -97,7 +95,9 @@ export default class Realtime extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      this._reg(data.uri.replace("file:///", ''))
+      this._reg(data.uri.replace("file:///", "")).then(res => {
+        this.setState({ result: res });
+      });
       /*
       console.log(data.uri);
       clarifai.models
@@ -250,7 +250,7 @@ export default class Realtime extends Component {
                   fontSize: 26,
                   color: "#fff",
                   fontFamily: "bold",
-                  textAlign: 'center',
+                  textAlign: "center",
                   marginTop: 10
                 }}
               >
@@ -261,7 +261,7 @@ export default class Realtime extends Component {
                   fontSize: 22,
                   color: "#fff",
                   fontFamily: "bold",
-                  textAlign: 'center',
+                  textAlign: "center",
                   marginTop: 10
                 }}
               >
