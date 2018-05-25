@@ -4095,6 +4095,12 @@ react-native-admob@^2.0.0-beta.4:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-animatable@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-animatable/-/react-native-animatable-1.2.4.tgz#b5fb7657e8f6edadbc26697057a327fb920b3039"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-camera-kit@^5.3.22:
   version "5.3.22"
   resolved "https://registry.yarnpkg.com/react-native-camera-kit/-/react-native-camera-kit-5.3.22.tgz#95e3c24a88c67298b9f46f48f8078f2f31cda3c4"
@@ -4151,6 +4157,13 @@ react-native-image-picker@^0.26.7:
   version "0.26.7"
   resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.26.7.tgz#ad2ee957f7f6cc01396893ea03d84cb2adb2e376"
 
+react-native-modal@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-6.0.0.tgz#72b829454cde207848e4323a96a440c152f7508e"
+  dependencies:
+    prop-types "^15.6.1"
+    react-native-animatable "^1.2.4"
+
 react-native-safe-area-view@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.7.0.tgz#38f5ab9368d6ef9e5d18ab64212938af3ec39421"
@@ -4170,6 +4183,16 @@ react-native-tab-view@^0.0.74:
   resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.74.tgz#62c0c882d9232b461ce181d440d683b4f99d1bd8"
   dependencies:
     prop-types "^15.6.0"
+
+react-native-tensorflow@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/react-native-tensorflow/-/react-native-tensorflow-0.1.7.tgz#51b6385e953e27a71833fe57d20e3cacdf3102ea"
+  dependencies:
+    uuid "^3.1.0"
+
+react-native-timer@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/react-native-timer/-/react-native-timer-1.3.3.tgz#6dcd48bac37e89f17964a0f5404dae08bd9dfb19"
 
 react-native-vector-icons@^4.5.0:
   version "4.5.0"
