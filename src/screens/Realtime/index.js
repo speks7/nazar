@@ -31,7 +31,7 @@ export default class Realtime extends Component {
     this.state = {
       result: "",
       value: null,
-      flashMode: RNCamera.Constants.FlashMode.auto,
+      flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back
