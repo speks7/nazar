@@ -108,6 +108,10 @@ android {
         }
     }
 
+    dexOptions {
+        jumboMode true
+    }
+
     signingConfigs {
         release {
             if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
@@ -154,8 +158,8 @@ dependencies {
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
         exclude group: "com.android.support"
+        implementation 'com.android.support:exifinterface:27.+'
         /*exclude group: "com.google.android.gms"
-        implementation 'com.android.support:exifinterface:.+'
         compile ('com.google.android.gms:play-services-vision:12.0.1') {
             force = true
         }*/
