@@ -47,16 +47,12 @@ export default class Realtime extends Component {
   }
 
   componentDidMount() {
-    /*
-    const clarifai = new Clarifai.App({
-      apiKey: CLARIFAY_KEY //dummy
-    });
-    */
     process.nextTick = setImmediate; // RN polyfill
   }
 
   async _reg(img) {
     var preder = null;
+    var items = "";
     try {
       const tfImageRecognition = new TfImageRecognition({
         model: require("../../../assets/tensorflow_inception_graph.pb"),
@@ -67,25 +63,23 @@ export default class Realtime extends Component {
         image: img //this.image
       });
 
-      // const resultText = `Name: ${results[0].name} - Confidence: ${results[0].confidence}`
-
-      const items = results
+      /*const items = results
         .map(item => {
           return item.name;
         })
         .join("、");
-      const resultText = `Found: ${items}`;
+      const resultText = `Found: ${items}`;*/
 
-      results.forEach(result => (preder = result.confidence));
+      results.forEach(
+        result => ((preder = result.confidence), (items = result.name))
+      );
 
       await tfImageRecognition.close();
 
       this.setState({
-        result: resultText,
+        result: items,
         value: preder
       });
-
-      return resultText;
     } catch (err) {
       alert(err);
     }
@@ -95,27 +89,8 @@ export default class Realtime extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      this._reg(data.uri.replace("file:///", "")).then(res => {
-        this.setState({ result: res });
-      });
-      /*
       console.log(data.uri);
-      clarifai.models
-        .predict(Clarifai.GENERAL_MODEL, data.base64)
-        .then(response => {
-          const { concepts } = response.outputs[0].data.uri;
-
-          if (concepts && concepts.length > 0) {
-            for (const prediction of concepts) {
-              this.setState({
-                result: prediction.name,
-                value: prediction.value
-              });
-            }
-          }
-        })
-        .catch(err => alert(err));*/
-      //this.props.navigation.navigate('CameraPreview', {'imageData': data, 'alreadySelectedImages': this.alreadySelectedImages});
+      this._reg(data.uri.replace("file:///", ""));
     }
   };
 
