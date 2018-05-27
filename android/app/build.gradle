@@ -110,6 +110,7 @@ android {
 
     dexOptions {
         jumboMode true
+        incremental false 
     }
 
     signingConfigs {
