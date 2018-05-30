@@ -52,7 +52,6 @@
 		430012C1A28344C892346BAF /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79BCC083719148E69C38525D /* Zocial.ttf */; };
 		33C5B2E7AEEE446781AEB7A6 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B091B0048CC74AD1A1049728 /* libRNVectorIcons.a */; };
 		5B2A3091ABA944A995F084DE /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45348BFF3A1F496B956A8978 /* libSplashScreen.a */; };
-		C4111C71CEEF4262A45FD1E1 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C941194D6845E585B096C6 /* libRNAdMobManager.a */; };
 		ECD73D840AB245CBBA45B504 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F0DA7FAAF748B7ABBF148B /* libRNCamera.a */; };
 		EBA7F5A08B894F5C93085350 /* libRNTensorflow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 883F3BDF5105480CA5B0905F /* libRNTensorflow.a */; };
 /* End PBXBuildFile section */
@@ -379,8 +378,6 @@
 		B091B0048CC74AD1A1049728 /* libRNVectorIcons.a */ = {isa = PBXFileReference; name = "libRNVectorIcons.a"; path = "libRNVectorIcons.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		AA479826F4584FF8ADF831F7 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		45348BFF3A1F496B956A8978 /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		A2527A24815242949852221E /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; name = "RNAdMobManager.xcodeproj"; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		27C941194D6845E585B096C6 /* libRNAdMobManager.a */ = {isa = PBXFileReference; name = "libRNAdMobManager.a"; path = "libRNAdMobManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		C79F98F0160B43EDBE21195A /* RNCamera.xcodeproj */ = {isa = PBXFileReference; name = "RNCamera.xcodeproj"; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		51F0DA7FAAF748B7ABBF148B /* libRNCamera.a */ = {isa = PBXFileReference; name = "libRNCamera.a"; path = "libRNCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		8AABABCB82C64B75AF003560 /* RNTensorflow.xcodeproj */ = {isa = PBXFileReference; name = "RNTensorflow.xcodeproj"; path = "../node_modules/react-native-tensorflow/ios/RNTensorflow.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
@@ -417,7 +414,6 @@
 				10067B0FCF4F4826B632A70E /* libRNShare.a in Frameworks */,
 				33C5B2E7AEEE446781AEB7A6 /* libRNVectorIcons.a in Frameworks */,
 				5B2A3091ABA944A995F084DE /* libSplashScreen.a in Frameworks */,
-				C4111C71CEEF4262A45FD1E1 /* libRNAdMobManager.a in Frameworks */,
 				ECD73D840AB245CBBA45B504 /* libRNCamera.a in Frameworks */,
 				EBA7F5A08B894F5C93085350 /* libRNTensorflow.a in Frameworks */,
 			);
@@ -610,7 +606,6 @@
 				762C559EDBC24B58A4E6C8B1 /* RNShare.xcodeproj */,
 				30921C15412F46EBA866BD04 /* RNVectorIcons.xcodeproj */,
 				AA479826F4584FF8ADF831F7 /* SplashScreen.xcodeproj */,
-				A2527A24815242949852221E /* RNAdMobManager.xcodeproj */,
 				C79F98F0160B43EDBE21195A /* RNCamera.xcodeproj */,
 				8AABABCB82C64B75AF003560 /* RNTensorflow.xcodeproj */,
 			);
@@ -1277,7 +1272,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
@@ -1307,7 +1301,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
@@ -1335,7 +1328,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
@@ -1362,7 +1354,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
@@ -1401,7 +1392,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
@@ -1440,7 +1430,6 @@
 					"$(SRCROOT)/../node_modules/react-native-share/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
-					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
