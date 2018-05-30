@@ -14,8 +14,6 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 
-import Clarifai from "clarifai";
-import { CLARIFAY_KEY } from "react-native-dotenv";
 import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
