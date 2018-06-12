@@ -154,7 +154,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-tensorflow')
+    implementation project(':react-native-tensorflow')
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
         exclude group: "com.android.support"
