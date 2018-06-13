@@ -1,9 +1,7 @@
 # <p align="center"> Nazar </p>
-
 <p align="center">
-  <img alt="icon" src="https://i.imgur.com/tXJvMQg.png" width="120" height="120"> 
+  <img alt="icon" src="https://i.imgur.com/dcLEEIn.png" width="120" height="120"> 
 </p>
-
 <p align="center">Electronic component detection system</p>
 
 ## Overview
@@ -17,12 +15,10 @@ It is done with both Clarifai API and Tensorflow frozen graph to deduce without 
 </p>
 
 <p align="center">
-  <img alt="screenshot_1" src="https://i.imgur.com/k8lG4Mn.png" width="200" height="356" style="margin-left: 10px">
-  <img alt="screenshot_2" src="https://i.imgur.com/FVFjFlw.png" width="200" height="356" style="margin-left: 10px">
-  <img alt="screenshot_3" src="https://i.imgur.com/By9qMwT.png" width="200" height="356" style="margin-left: 10px">
-  <img alt="screenshot_4" src="https://i.imgur.com/BIktO0I.png" width="200" height="356" style="margin-left: 10px">
-  <img alt="screenshot_4" src="https://i.imgur.com/6AzTqki.png" width="200" height="356" style="margin-left: 10px">
-  <img alt="screenshot_4" src="https://i.imgur.com/syx3gRT.png" width="200" height="356" style="margin-left: 10px">
+  <img alt="Main View" src="https://i.imgur.com/k8lG4Mn.png" width="200" height="356" style="margin-left: 10px">
+  <img alt="Image Picker" src="https://i.imgur.com/By9qMwT.png" width="200" height="356" style="margin-left: 10px">
+  <img alt="Online analysis" src="https://i.imgur.com/BIktO0I.png" width="200" height="356" style="margin-left: 10px">
+  <img alt="Realtime Analysis" src="https://i.imgur.com/6AzTqki.png" width="200" height="356" style="margin-left: 10px">
 </p>
 
 
