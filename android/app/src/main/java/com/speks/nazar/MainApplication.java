@@ -10,6 +10,7 @@ import org.reactnative.camera.RNCameraPackage;
 import com.imagepicker.ImagePickerPackage;
 //import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.wix.RNCameraKit.RNCameraKitPackage;
+import com.speks.nazar.tensorflow.TensorFlowPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ImagePickerPackage(),
             //new RNAdMobPackage(),
-            new RNCameraPackage()
+            new RNCameraPackage(),
+            new TensorFlowPackage()
             //new RNCameraKitPackage()
       );
     }

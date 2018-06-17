@@ -61,3 +61,4 @@ buck-out/
 *.jsbundle
 
 /assets/
+/android/app/src/main/assets/stylize_v1/

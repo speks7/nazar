@@ -14,6 +14,7 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 
+import TensorFlowModule from '../../tensorflow/TensorFlow';
 import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
@@ -25,7 +26,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require("../../../assets/dumbbell.jpg");
+    this.image = require("../../../android/app/src/main/assets/stylize_v1/index.jpg");
     this.state = {
       result: "Detected item",
       value: null,
@@ -53,8 +54,8 @@ export default class Realtime extends Component {
     var items = "";
     try {
       const tfImageRecognition = new TfImageRecognition({
-        model: require("../../../assets/tensorflow_inception_graph.pb"),
-        labels: require("../../../assets/tensorflow_labels.txt")
+        model: require("../../../android/app/src/main/assets/stylize_v1/tensorflow_inception_graph.pb"),
+        labels: require("../../../android/app/src/main/assets/stylize_v1/tensorflow_labels.txt")
       });
 
       const results = await tfImageRecognition.recognize({
@@ -85,7 +86,7 @@ export default class Realtime extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.2, base64: true };
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
       this._reg(data.uri.replace("file:///", ""));
