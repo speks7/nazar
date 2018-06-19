@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package com.artist.tensorflow.utils;
+package com.speks.nazar.tensorflow.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

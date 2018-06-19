@@ -1,4 +1,4 @@
-package com.artist.tensorflow;
+package com.speks.nazar.tensorflow;
 
 /**
  * Created by dano on 01/03/17.
@@ -44,7 +44,7 @@ import java.io.IOException;
 
 import org.tensorflow.TensorFlow;
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
-import com.artist.tensorflow.utils.ImageUtils;
+import com.speks.nazar.tensorflow.utils.ImageUtils;
 
 
 public class TensorFlowModule extends ReactContextBaseJavaModule {

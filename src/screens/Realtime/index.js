@@ -54,8 +54,8 @@ export default class Realtime extends Component {
     var items = "";
     try {
       const tfImageRecognition = new TfImageRecognition({
-        model: require("../../../android/app/src/main/assets/stylize_v1/tensorflow_inception_graph.pb"),
-        labels: require("../../../android/app/src/main/assets/stylize_v1/tensorflow_labels.txt")
+        model: require("../../../android/app/src/main/assets/stylize_v1/stylize_quantized.pb"),
+        labels: require("../../../android/app/src/main/assets/stylize_v1/labels.txt")
       });
 
       const results = await tfImageRecognition.recognize({
