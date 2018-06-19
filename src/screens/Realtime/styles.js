@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   slider: {
     //flex: 1,
-    backgroundColor: 'white',
+    //backgroundColor: 'rgba(232, 147, 142, 1)',
     alignItems: 'center',
     justifyContent: 'center'
   },

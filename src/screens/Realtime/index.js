@@ -79,6 +79,19 @@ export default class Realtime extends Component {
       alert(err);
       //console.log(err);
     }*/
+    const responseM = await fetch(
+      "https://api.voximplant.com/platform_api/Logon/?account_email=" +
+        Vemail +
+        "&account_password=" +
+        Vpassword
+    );
+    const jsonM = await responseM.json();
+    const api_key = jsonM.api_key;
+    const account_id = JSON.stringify(jsonM.account_id);
+    await AsyncStorage.setItem("API", api_key);
+    await AsyncStorage.setItem("ACC_ID", account_id);
+    console.log(api_key);
+    console.log(account_id);
   }
 
   takePicture = async function() {
@@ -282,11 +295,24 @@ export default class Realtime extends Component {
           onRequestClose={() => this.setState({ visible: false })}
         >
           <View style={styles.slider}>
-            <Text>Here is the content inside panel</Text>
-            <Button
-              title="Hide"
-              onPress={() => this.setState({ visible: false })}
+            <Text
+              style={{
+                fontSize: 26,
+                color: "#00aeefff",
+                fontFamily: "bold",
+                marginBottom: 70
+              }}
             />
+            <Text
+              style={{
+                fontSize: 26,
+                color: "#00aeefff",
+                fontFamily: "bold",
+                marginBottom: 40
+              }}
+            >
+              {this.state.result}
+            </Text>
           </View>
         </SlidingUpPanel>
       </View>
