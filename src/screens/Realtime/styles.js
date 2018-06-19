@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   cameraOptionsHeader: {
     flexDirection: 'row',
     height: 80,
-    zIndex: 100,
+    zIndex: 80,
     position: 'absolute',
     top: 0,
     justifyContent: 'space-between',
@@ -48,16 +48,18 @@ const styles = StyleSheet.create({
     //height: SCREEN_HEIGHT
   },
   cameraClickBlock: {
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
     width: '100%',
     bottom: 5,
     position: 'absolute',
-    paddingRight: 15
+    paddingRight: 15,
+    marginBottom: 20
   },
   cameraIcon: {
     fontSize: 45,
     color: 'white',
+    marginBottom: 20
   },
   animator: {
     position: 'absolute',
@@ -68,6 +70,12 @@ const styles = StyleSheet.create({
     bottom: 80,
     left: 12,
     right: 12,
+  },
+  slider: {
+    //flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   loader: {
     position: "absolute",

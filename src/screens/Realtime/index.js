@@ -8,13 +8,15 @@ import {
   TouchableOpacity,
   Linking,
   View,
-  ScrollView
+  ScrollView,
+  Button
 } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
+import SlidingUpPanel from "rn-sliding-up-panel";
 
-import TensorFlowModule from '../../tensorflow/TensorFlow';
+import TensorFlowModule from "../../tensorflow/TensorFlow";
 import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
@@ -33,7 +35,8 @@ export default class Realtime extends Component {
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
-      type: RNCamera.Constants.Type.back
+      type: RNCamera.Constants.Type.back,
+      visible: false
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
@@ -52,7 +55,7 @@ export default class Realtime extends Component {
   async _reg(img) {
     var preder = null;
     var items = "";
-    try {
+    /*try {
       const tfImageRecognition = new TfImageRecognition({
         model: require("../../../android/app/src/main/assets/stylize_v1/stylize_quantized.pb"),
         labels: require("../../../android/app/src/main/assets/stylize_v1/labels.txt")
@@ -61,13 +64,6 @@ export default class Realtime extends Component {
       const results = await tfImageRecognition.recognize({
         image: img //this.image
       });
-
-      /*const items = results
-        .map(item => {
-          return item.name;
-        })
-        .join("、");
-      const resultText = `Found: ${items}`;*/
 
       results.forEach(
         result => ((preder = result.confidence), (items = result.name))
@@ -81,7 +77,8 @@ export default class Realtime extends Component {
       });
     } catch (err) {
       alert(err);
-    }
+      //console.log(err);
+    }*/
   }
 
   takePicture = async function() {
@@ -276,6 +273,22 @@ export default class Realtime extends Component {
             <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
+        <Button
+          title="Show Details"
+          onPress={() => this.setState({ visible: true })}
+        />
+        <SlidingUpPanel
+          visible={this.state.visible}
+          onRequestClose={() => this.setState({ visible: false })}
+        >
+          <View style={styles.slider}>
+            <Text>Here is the content inside panel</Text>
+            <Button
+              title="Hide"
+              onPress={() => this.setState({ visible: false })}
+            />
+          </View>
+        </SlidingUpPanel>
       </View>
     );
   }
