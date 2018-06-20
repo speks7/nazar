@@ -36,7 +36,11 @@ export default class Realtime extends Component {
       flash: "auto",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
-      visible: false
+      visible: false,
+      photoAsBase64: {
+        content: "",
+        photoPath: ""
+      }
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
@@ -55,6 +59,16 @@ export default class Realtime extends Component {
   async _reg(img) {
     var preder = null;
     var items = "";
+    const { content, photoPath } = this.state.photoAsBase64;
+    TensorFlowModule.checkForBlurryImage(
+      imageAsBase64,
+      error => {
+        // error handling
+      },
+      msg => {
+        resolve(msg);
+      }
+    );
     /*try {
       const tfImageRecognition = new TfImageRecognition({
         model: require("../../../android/app/src/main/assets/stylize_v1/stylize_quantized.pb"),
@@ -96,9 +110,13 @@ export default class Realtime extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.2, base64: true };
+      const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
+      this.setState({
+        ...this.state,
+        photoAsBase64: { content: data.base64, photoPath: data.uri }
+      });
       this._reg(data.uri.replace("file:///", ""));
     }
   };
