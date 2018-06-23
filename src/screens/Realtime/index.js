@@ -28,7 +28,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require("../../../android/app/src/main/assets/stylize_v1/index.jpg");
+    this.image = require("../../../assets/index.jpg");
     this.state = {
       result: "Detected item",
       value: null,
@@ -36,11 +36,7 @@ export default class Realtime extends Component {
       flash: "auto",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
-      visible: false,
-      photoAsBase64: {
-        content: "",
-        photoPath: ""
-      }
+      visible: false
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
@@ -59,7 +55,7 @@ export default class Realtime extends Component {
   async _reg(img) {
     var preder = null;
     var items = "";
-    const { content, photoPath } = this.state.photoAsBase64;
+    /*const { content, photoPath } = this.state.photoAsBase64;
     TensorFlowModule.checkForBlurryImage(
       imageAsBase64,
       error => {
@@ -68,11 +64,11 @@ export default class Realtime extends Component {
       msg => {
         resolve(msg);
       }
-    );
-    /*try {
+    );*/
+    try {
       const tfImageRecognition = new TfImageRecognition({
-        model: require("../../../android/app/src/main/assets/stylize_v1/stylize_quantized.pb"),
-        labels: require("../../../android/app/src/main/assets/stylize_v1/labels.txt")
+        model: require("../../../assets/retrained_graph.pb"),
+        labels: require("../../../assets/retrained_labels.txt")
       });
 
       const results = await tfImageRecognition.recognize({
@@ -92,7 +88,8 @@ export default class Realtime extends Component {
     } catch (err) {
       alert(err);
       //console.log(err);
-    }*/
+    }
+    /*
     const responseM = await fetch(
       "https://api.voximplant.com/platform_api/Logon/?account_email=" +
         Vemail +
@@ -105,7 +102,7 @@ export default class Realtime extends Component {
     await AsyncStorage.setItem("API", api_key);
     await AsyncStorage.setItem("ACC_ID", account_id);
     console.log(api_key);
-    console.log(account_id);
+    console.log(account_id);*/
   }
 
   takePicture = async function() {
@@ -113,10 +110,10 @@ export default class Realtime extends Component {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
       console.log(data.uri);
-      this.setState({
+      /*this.setState({
         ...this.state,
         photoAsBase64: { content: data.base64, photoPath: data.uri }
-      });
+      });*/
       this._reg(data.uri.replace("file:///", ""));
     }
   };
