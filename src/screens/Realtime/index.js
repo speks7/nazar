@@ -65,7 +65,7 @@ export default class Realtime extends Component {
         resolve(msg);
       }
     );*/
-    try {
+    /*try {
       const tfImageRecognition = new TfImageRecognition({
         model: require("../../../assets/retrained_graph.pb"),
         labels: require("../../../assets/retrained_labels.txt")
@@ -88,7 +88,33 @@ export default class Realtime extends Component {
     } catch (err) {
       alert(err);
       //console.log(err);
-    }
+    }*/
+    console.log(img);
+
+    const userInfoResp = await fetch(
+      "https://nazar-server.herokuapp.com/classify_image/",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          data: [
+            {
+              ext: "jpg",
+              path: img,
+              type: "local"
+            }
+          ]
+        })
+      }
+    ).catch(function(err) {
+      console.log(err);
+    });
+    const userInfo = await userInfoResp.text();
+
+    console.log(userInfo);
     /*
     const responseM = await fetch(
       "https://api.voximplant.com/platform_api/Logon/?account_email=" +
@@ -109,12 +135,13 @@ export default class Realtime extends Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      console.log(data.uri);
+      //console.log(data.uri);
       /*this.setState({
         ...this.state,
         photoAsBase64: { content: data.base64, photoPath: data.uri }
       });*/
       this._reg(data.uri.replace("file:///", ""));
+      //this._reg(data.uri);
     }
   };
 
