@@ -98,7 +98,7 @@ export default class Realtime extends Component {
     }*/
     console.log(img);
 
-    http.post("/classify_image/", {
+    /*http.post("/classify_image/", {
       data: [
         {
           ext: "jpg",
@@ -106,14 +106,14 @@ export default class Realtime extends Component {
           type: "local"
         }
       ]
-    }).then ((response) => console.log (response));
-/*
+    }).then ((response) => console.log (response));*/
+
     const userInfoResp = await fetch(
       "https://nazar-server.herokuapp.com/classify_image/",
       {
         method: "POST",
         headers: {
-          Accept: "application/json",
+          "Accept": "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -131,7 +131,7 @@ export default class Realtime extends Component {
     });
     const userInfo = await userInfoResp.text();
 
-    console.log(userInfo);*/
+    console.log(userInfo);
     /*
     const responseM = await fetch(
       "https://api.voximplant.com/platform_api/Logon/?account_email=" +
