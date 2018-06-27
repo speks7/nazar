@@ -15,11 +15,18 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
+import axios from 'axios';
 
 import TensorFlowModule from "../../tensorflow/TensorFlow";
 import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
+
+const serverURL = "https://nazar-server.herokuapp.com";
+
+const http = axios.create({
+  baseURL: serverURL
+});
 
 export default class Realtime extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -91,6 +98,16 @@ export default class Realtime extends Component {
     }*/
     console.log(img);
 
+    http.post("/classify_image/", {
+      data: [
+        {
+          ext: "jpg",
+          path: img,
+          type: "local"
+        }
+      ]
+    }).then ((response) => console.log (response));
+/*
     const userInfoResp = await fetch(
       "https://nazar-server.herokuapp.com/classify_image/",
       {
@@ -114,7 +131,7 @@ export default class Realtime extends Component {
     });
     const userInfo = await userInfoResp.text();
 
-    console.log(userInfo);
+    console.log(userInfo);*/
     /*
     const responseM = await fetch(
       "https://api.voximplant.com/platform_api/Logon/?account_email=" +
