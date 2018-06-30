@@ -15,7 +15,7 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import axios from 'axios';
+import axios from "axios";
 
 import TensorFlowModule from "../../tensorflow/TensorFlow";
 import { TfImageRecognition } from "react-native-tensorflow";
@@ -60,7 +60,7 @@ export default class Realtime extends Component {
   }
 
   async _reg(img) {
-    var preder = null;
+    var preder = "data:image/jpg;base64," + img;
     var items = "";
     /*const { content, photoPath } = this.state.photoAsBase64;
     TensorFlowModule.checkForBlurryImage(
@@ -96,7 +96,8 @@ export default class Realtime extends Component {
       alert(err);
       //console.log(err);
     }*/
-    console.log(img);
+    //img = "data:image/jpg;base64," + img;
+    //console.log(img);
 
     /*http.post("/classify_image/", {
       data: [
@@ -108,30 +109,56 @@ export default class Realtime extends Component {
       ]
     }).then ((response) => console.log (response));*/
 
-    const userInfoResp = await fetch(
+    /*const userInfoResp = await fetch(
       "https://nazar-server.herokuapp.com/classify_image/",
       {
         method: "POST",
         headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
+          'Accept': "application/json",
+          'Content-Type': "application/json"
         },
         body: JSON.stringify({
           data: [
             {
-              ext: "jpg",
-              path: img,
-              type: "local"
+              image64: img
             }
           ]
         })
       }
     ).catch(function(err) {
       console.log(err);
-    });
-    const userInfo = await userInfoResp.text();
+    });*/
 
-    console.log(userInfo);
+    fetch("https://nazar-server.herokuapp.com/classify_image/", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        data: [
+          {
+            image64: preder
+          }
+        ]
+      })
+    })
+      .then(response => response.text())
+      .then(responseJson => {
+        console.log(responseJson);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    // const userInfo = await userInfoResp.json();
+    //console.log(userInfo);
+    /*
+    this.setState({
+      result: userInfo.Component,
+      value: userInfo.Component
+    });*/
+
     /*
     const responseM = await fetch(
       "https://api.voximplant.com/platform_api/Logon/?account_email=" +
@@ -150,15 +177,15 @@ export default class Realtime extends Component {
 
   takePicture = async function() {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.1, base64: true };
       const data = await this.camera.takePictureAsync(options);
       //console.log(data.uri);
       /*this.setState({
         ...this.state,
         photoAsBase64: { content: data.base64, photoPath: data.uri }
       });*/
-      this._reg(data.uri.replace("file:///", ""));
-      //this._reg(data.uri);
+      //this._reg(data.uri.replace("file:///", ""));
+      this._reg(data.base64);
     }
   };
 
