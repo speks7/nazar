@@ -8,7 +8,8 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
   LayoutAnimation,
-  Image
+  Image,
+  Linking
 } from "react-native";
 
 //import { AdMobBanner } from "react-native-admob";
@@ -186,7 +187,7 @@ class Home extends Component {
                           textAlign: "right"
                         }}
                       >
-                        v1.0.1
+                        v1.1.0
                       </Text>
                     </View>
                     <View
@@ -204,7 +205,9 @@ class Home extends Component {
                         }}
                       >
                         An electronic component detection app which allows the
-                        user to identify different e-devices using images.
+                        user to identify different electronic components in
+                        realtime or using captured images using tensorflow
+                        server.
                       </Text>
                     </View>
                     <View style={{ marginTop: 10 }}>
@@ -229,7 +232,7 @@ class Home extends Component {
                           <View style={{ flex: 1 }}>
                             <Text style={styles.infoTypeLabel}>Camera</Text>
                             <Text style={styles.infoTypeLabel}>Gallery</Text>
-                            <Text style={styles.infoTypeLabel}>Clarifai</Text>
+                            <Text style={styles.infoTypeLabel}>Tensorflow</Text>
                             <Text style={styles.infoTypeLabel}>Prediction</Text>
                           </View>
                           <View style={{ marginLeft: 10 }}>
@@ -240,10 +243,10 @@ class Home extends Component {
                               Use already captured images
                             </Text>
                             <Text style={styles.infoAnswerLabel}>
-                              Fetch Clarifai API to analyze image
+                              Request Heroku Server base64
                             </Text>
                             <Text style={styles.infoAnswerLabel}>
-                              Show prediction name and value
+                              Show predicted name and value
                             </Text>
                           </View>
                         </View>
@@ -268,7 +271,7 @@ class Home extends Component {
                       containerStyle={{ flex: 0 }}
                       activeOpacity={0.8}
                       text={"Realtime analysis"}
-                      onPress= {this._onClick2}
+                      onPress={this._onClick2}
                       textStyle={styles.loadTextButton}
                       loading={loading}
                       disabled={loading}
@@ -283,7 +286,11 @@ class Home extends Component {
                 textStyle={{ color: "white" }}
                 buttonStyle={{ backgroundColor: "transparent" }}
                 underlayColor="transparent"
-                onPress={() => console.log("To github repo")}
+                onPress={() =>
+                  Linking.openURL(
+                    `https://github.com/aryaminus/nazar`
+                  )
+                }
               />
             </View>
           </View>
