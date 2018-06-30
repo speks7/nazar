@@ -3,14 +3,14 @@ package com.speks.nazar;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.rntensorflow.RNTensorFlowPackage;
+//import com.rntensorflow.RNTensorFlowPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.imagepicker.ImagePickerPackage;
 //import com.sbugert.rnadmob.RNAdMobPackage;
 //import com.wix.RNCameraKit.RNCameraKitPackage;
-import com.speks.nazar.tensorflow.TensorFlowPackage;
+//import com.speks.nazar.tensorflow.TensorFlowPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,13 +31,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNTensorFlowPackage(),
+            //new RNTensorFlowPackage(),
             new SplashScreenReactPackage(),
             new VectorIconsPackage(),
             new ImagePickerPackage(),
             //new RNAdMobPackage(),
             new RNCameraPackage(),
-            new TensorFlowPackage()
+            //new TensorFlowPackage()
             //new RNCameraKitPackage()
       );
     }
