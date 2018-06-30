@@ -38,7 +38,7 @@ export default class Realtime extends Component {
     this.image = require("../../../assets/index.jpg");
     this.state = {
       result: "Detected item",
-      value: null,
+      value: "",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -61,73 +61,6 @@ export default class Realtime extends Component {
 
   async _reg(img) {
     var preder = "data:image/jpg;base64," + img;
-    var items = "";
-    /*const { content, photoPath } = this.state.photoAsBase64;
-    TensorFlowModule.checkForBlurryImage(
-      imageAsBase64,
-      error => {
-        // error handling
-      },
-      msg => {
-        resolve(msg);
-      }
-    );*/
-    /*try {
-      const tfImageRecognition = new TfImageRecognition({
-        model: require("../../../assets/retrained_graph.pb"),
-        labels: require("../../../assets/retrained_labels.txt")
-      });
-
-      const results = await tfImageRecognition.recognize({
-        image: img //this.image
-      });
-
-      results.forEach(
-        result => ((preder = result.confidence), (items = result.name))
-      );
-
-      await tfImageRecognition.close();
-
-      this.setState({
-        result: items,
-        value: preder * 100 + "%"
-      });
-    } catch (err) {
-      alert(err);
-      //console.log(err);
-    }*/
-    //img = "data:image/jpg;base64," + img;
-    //console.log(img);
-
-    /*http.post("/classify_image/", {
-      data: [
-        {
-          ext: "jpg",
-          path: img,
-          type: "local"
-        }
-      ]
-    }).then ((response) => console.log (response));*/
-
-    /*const userInfoResp = await fetch(
-      "https://nazar-server.herokuapp.com/classify_image/",
-      {
-        method: "POST",
-        headers: {
-          'Accept': "application/json",
-          'Content-Type': "application/json"
-        },
-        body: JSON.stringify({
-          data: [
-            {
-              image64: img
-            }
-          ]
-        })
-      }
-    ).catch(function(err) {
-      console.log(err);
-    });*/
 
     fetch("https://nazar-server.herokuapp.com/classify_image/", {
       method: "POST",
@@ -139,40 +72,26 @@ export default class Realtime extends Component {
         data: [
           {
             image64: preder
+            //image64: "data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAACqgAAAqoBkhG1CAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANASURBVEiJtZVLaFxlFMd/57s3M0pFazCTR2utUhQNmaRqrS248NEspJsuBKWPVYpNYpJidVEqbbAR026kyYwo3QmC1o2L7ISgIIq0NJmEUdpgFkIlM6Momi6c3PsdFxnbmem9M5OLc3b3nPM/v3O++z0gonWk53Z1TM0/E1XvRhWqNa8LxIAjUfQSRXT/x1fuixVbbgAt6ptt+eM9uY3WMFHAsaJ7BNgExMSxA1FqbBysKmCOlXkGu8ezsaaDE6lMP+gTZa4thVbv1aaDjcrxap8Ib62vRJPAD6TmH1WhPyDUk5jO7Gsa2MUcCNOIyNtNAbelsx1gZ0C/DEl5KXFhce//DjZ27ZSq/IDIN8DFoBwxeqbReg1tiK704oO+tUtAvORaBnLAbqqaV5G9+TeS39er2dDEvvXfKYMCPALsCdIbbWzquhN3pq4+ZNW5zvq93JBZo88Vhvu+rZVTd2Kr5sxGoADGcrpeTs2J29LZHcZ6PxHtFXsxN9I7G9pcLaXRtfGIUFCZrHWbhQbapxd6QOcAJ0D1tyifoqiKHAS9N5CNHMiPJAPPfY2JdTIQCn+K9Z9dGekdXBntHbLWfxrIB1UQdIJLl4JqBIPbpzMvAC8H9iOcXxl98sf/PgtjO5cQToV0392Rf+xQY2BVQTgfUqgYN/JRtdOK+xmwGiRQGA96r+8At6cWX0N5KgT88y9DyT+qnYXh7lWQ76rcqyXy9t9avWPVmgrwjqmlOOhECBRgKSygYn+tct0FzADvIRxuS2fvKQ9WHJW/zM1hUXk4rLhUXpuVMb1jqV1gv0KfGo7G/6m8hG5NvPmDuc2iErZJAFClM7wp6QppdquxzHgt/kD5ub4FjrlyEmgN0C4D76uYfie+ticM7K7dPITKPlTPlTTl5ih6LpHKTJY1BF0Xstt8411j/b8AeMAXYvXiymjv14hoGDDQVKU9tfA8MAC8wu1fWsSRx3NDyWUXwIo3UYIWRfncV3u2MLZzfSONbQhZGkc0B7PAbGfq6kmL8ybKUeBufD0LHJS29FyfseYyIp94jj39+2DfjQiourZlKrPVE30X5LAj7JbE1PwJXOer/FDPQjOA1Zb4cDGJb/v/BU/ZDa+FhKXnAAAAAElFTkSuQmCC"
           }
         ]
       })
     })
-      .then(response => response.text())
+      .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        //console.log(responseJson.Component);
+        this.setState({
+          result: responseJson.Component,
+          value: responseJson.Predictions
+        });
       })
       .catch(error => {
-        console.error(error);
+        //console.error(error);
+        this.setState({
+          result: "Image size too big",
+          value: "Get closer to the component"
+        });
       });
-
-    // const userInfo = await userInfoResp.json();
-    //console.log(userInfo);
-    /*
-    this.setState({
-      result: userInfo.Component,
-      value: userInfo.Component
-    });*/
-
-    /*
-    const responseM = await fetch(
-      "https://api.voximplant.com/platform_api/Logon/?account_email=" +
-        Vemail +
-        "&account_password=" +
-        Vpassword
-    );
-    const jsonM = await responseM.json();
-    const api_key = jsonM.api_key;
-    const account_id = JSON.stringify(jsonM.account_id);
-    await AsyncStorage.setItem("API", api_key);
-    await AsyncStorage.setItem("ACC_ID", account_id);
-    console.log(api_key);
-    console.log(account_id);*/
   }
 
   takePicture = async function() {
@@ -372,7 +291,7 @@ export default class Realtime extends Component {
             <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
-        <Button
+        {/*<Button
           title="Show Details"
           onPress={() => this.setState({ visible: true })}
         />
@@ -400,7 +319,7 @@ export default class Realtime extends Component {
               {this.state.result}
             </Text>
           </View>
-        </SlidingUpPanel>
+            </SlidingUpPanel>*/}
       </View>
     );
   }
