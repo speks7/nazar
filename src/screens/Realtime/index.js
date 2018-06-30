@@ -16,9 +16,6 @@ import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
 
-import TensorFlowModule from "../../tensorflow/TensorFlow";
-import { TfImageRecognition } from "react-native-tensorflow";
-
 import styles from "./styles";
 
 export default class Realtime extends Component {
@@ -28,7 +25,6 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require("../../../assets/index.jpg");
     this.state = {
       result: "Detected item",
       value: "",

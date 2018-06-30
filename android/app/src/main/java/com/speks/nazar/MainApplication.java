@@ -36,7 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ImagePickerPackage(),
             //new RNAdMobPackage(),
-            new RNCameraPackage(),
+            new RNCameraPackage()
             //new TensorFlowPackage()
             //new RNCameraKitPackage()
       );
