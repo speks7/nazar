@@ -15,18 +15,11 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import axios from "axios";
 
 import TensorFlowModule from "../../tensorflow/TensorFlow";
 import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
-
-const serverURL = "https://nazar-server.herokuapp.com";
-
-const http = axios.create({
-  baseURL: serverURL
-});
 
 export default class Realtime extends Component {
   static navigationOptions = ({ navigation }) => ({
