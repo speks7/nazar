@@ -9,7 +9,8 @@ import {
   Linking,
   View,
   ScrollView,
-  Button
+  Button,
+  NetInfo
 } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
@@ -46,41 +47,63 @@ export default class Realtime extends Component {
 
   componentDidMount() {
     process.nextTick = setImmediate; // RN polyfill
+    NetInfo.isConnected.addEventListener(
+      "connectionChange",
+      this.handleConnectionChange
+    );
+    NetInfo.isConnected.fetch().done(isConnected => {
+      this.setState({ status: isConnected });
+    });
   }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener(
+      "connectionChange",
+      this.handleConnectionChange
+    );
+  }
+
+  handleConnectionChange = isConnected => {
+    this.setState({ status: isConnected });
+  };
 
   async _reg(img) {
     var preder = "data:image/jpg;base64," + img;
 
-    fetch("https://nazar-server.herokuapp.com/classify_image/", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        data: [
-          {
-            image64: preder
-            //image64: "data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAACqgAAAqoBkhG1CAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANASURBVEiJtZVLaFxlFMd/57s3M0pFazCTR2utUhQNmaRqrS248NEspJsuBKWPVYpNYpJidVEqbbAR026kyYwo3QmC1o2L7ISgIIq0NJmEUdpgFkIlM6Momi6c3PsdFxnbmem9M5OLc3b3nPM/v3O++z0gonWk53Z1TM0/E1XvRhWqNa8LxIAjUfQSRXT/x1fuixVbbgAt6ptt+eM9uY3WMFHAsaJ7BNgExMSxA1FqbBysKmCOlXkGu8ezsaaDE6lMP+gTZa4thVbv1aaDjcrxap8Ib62vRJPAD6TmH1WhPyDUk5jO7Gsa2MUcCNOIyNtNAbelsx1gZ0C/DEl5KXFhce//DjZ27ZSq/IDIN8DFoBwxeqbReg1tiK704oO+tUtAvORaBnLAbqqaV5G9+TeS39er2dDEvvXfKYMCPALsCdIbbWzquhN3pq4+ZNW5zvq93JBZo88Vhvu+rZVTd2Kr5sxGoADGcrpeTs2J29LZHcZ6PxHtFXsxN9I7G9pcLaXRtfGIUFCZrHWbhQbapxd6QOcAJ0D1tyifoqiKHAS9N5CNHMiPJAPPfY2JdTIQCn+K9Z9dGekdXBntHbLWfxrIB1UQdIJLl4JqBIPbpzMvAC8H9iOcXxl98sf/PgtjO5cQToV0392Rf+xQY2BVQTgfUqgYN/JRtdOK+xmwGiRQGA96r+8At6cWX0N5KgT88y9DyT+qnYXh7lWQ76rcqyXy9t9avWPVmgrwjqmlOOhECBRgKSygYn+tct0FzADvIRxuS2fvKQ9WHJW/zM1hUXk4rLhUXpuVMb1jqV1gv0KfGo7G/6m8hG5NvPmDuc2iErZJAFClM7wp6QppdquxzHgt/kD5ub4FjrlyEmgN0C4D76uYfie+ticM7K7dPITKPlTPlTTl5ih6LpHKTJY1BF0Xstt8411j/b8AeMAXYvXiymjv14hoGDDQVKU9tfA8MAC8wu1fWsSRx3NDyWUXwIo3UYIWRfncV3u2MLZzfSONbQhZGkc0B7PAbGfq6kmL8ybKUeBufD0LHJS29FyfseYyIp94jj39+2DfjQiourZlKrPVE30X5LAj7JbE1PwJXOer/FDPQjOA1Zb4cDGJb/v/BU/ZDa+FhKXnAAAAAElFTkSuQmCC"
-          }
-        ]
+    if (this.state.status) {
+      fetch("https://nazar-server.herokuapp.com/classify_image/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          data: [
+            {
+              image64: preder
+              //image64: "data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAACqgAAAqoBkhG1CAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANASURBVEiJtZVLaFxlFMd/57s3M0pFazCTR2utUhQNmaRqrS248NEspJsuBKWPVYpNYpJidVEqbbAR026kyYwo3QmC1o2L7ISgIIq0NJmEUdpgFkIlM6Momi6c3PsdFxnbmem9M5OLc3b3nPM/v3O++z0gonWk53Z1TM0/E1XvRhWqNa8LxIAjUfQSRXT/x1fuixVbbgAt6ptt+eM9uY3WMFHAsaJ7BNgExMSxA1FqbBysKmCOlXkGu8ezsaaDE6lMP+gTZa4thVbv1aaDjcrxap8Ib62vRJPAD6TmH1WhPyDUk5jO7Gsa2MUcCNOIyNtNAbelsx1gZ0C/DEl5KXFhce//DjZ27ZSq/IDIN8DFoBwxeqbReg1tiK704oO+tUtAvORaBnLAbqqaV5G9+TeS39er2dDEvvXfKYMCPALsCdIbbWzquhN3pq4+ZNW5zvq93JBZo88Vhvu+rZVTd2Kr5sxGoADGcrpeTs2J29LZHcZ6PxHtFXsxN9I7G9pcLaXRtfGIUFCZrHWbhQbapxd6QOcAJ0D1tyifoqiKHAS9N5CNHMiPJAPPfY2JdTIQCn+K9Z9dGekdXBntHbLWfxrIB1UQdIJLl4JqBIPbpzMvAC8H9iOcXxl98sf/PgtjO5cQToV0392Rf+xQY2BVQTgfUqgYN/JRtdOK+xmwGiRQGA96r+8At6cWX0N5KgT88y9DyT+qnYXh7lWQ76rcqyXy9t9avWPVmgrwjqmlOOhECBRgKSygYn+tct0FzADvIRxuS2fvKQ9WHJW/zM1hUXk4rLhUXpuVMb1jqV1gv0KfGo7G/6m8hG5NvPmDuc2iErZJAFClM7wp6QppdquxzHgt/kD5ub4FjrlyEmgN0C4D76uYfie+ticM7K7dPITKPlTPlTTl5ih6LpHKTJY1BF0Xstt8411j/b8AeMAXYvXiymjv14hoGDDQVKU9tfA8MAC8wu1fWsSRx3NDyWUXwIo3UYIWRfncV3u2MLZzfSONbQhZGkc0B7PAbGfq6kmL8ybKUeBufD0LHJS29FyfseYyIp94jj39+2DfjQiourZlKrPVE30X5LAj7JbE1PwJXOer/FDPQjOA1Zb4cDGJb/v/BU/ZDa+FhKXnAAAAAElFTkSuQmCC"
+            }
+          ]
+        })
       })
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        //console.log(responseJson.Component);
-        this.setState({
-          result: responseJson.Component,
-          value: responseJson.Predictions
+        .then(response => response.json())
+        .then(responseJson => {
+          //console.log(responseJson.Component);
+          this.setState({
+            result: responseJson.Component,
+            value: responseJson.Predictions
+          });
+        })
+        .catch(error => {
+          //console.error(error);
+          this.setState({
+            result: "Image size too big",
+            value: "Get closer to the component"
+          });
         });
-      })
-      .catch(error => {
-        //console.error(error);
-        this.setState({
-          result: "Image size too big",
-          value: "Get closer to the component"
-        });
-      });
+    } else {
+      alert("Internet is not available..!!");
+    }
   }
 
   takePicture = async function() {
@@ -280,7 +303,7 @@ export default class Realtime extends Component {
             <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
-        {/*<Button
+        <Button
           title="Show Details"
           onPress={() => this.setState({ visible: true })}
         />
@@ -296,7 +319,9 @@ export default class Realtime extends Component {
                 fontFamily: "bold",
                 marginBottom: 70
               }}
-            />
+            >
+              NAZAR
+            </Text>
             <Text
               style={{
                 fontSize: 26,
@@ -308,7 +333,7 @@ export default class Realtime extends Component {
               {this.state.result}
             </Text>
           </View>
-            </SlidingUpPanel>*/}
+        </SlidingUpPanel>
       </View>
     );
   }
