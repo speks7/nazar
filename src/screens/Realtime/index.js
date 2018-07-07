@@ -16,6 +16,7 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
+import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
 
@@ -26,6 +27,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
+    this.image = require("../../../assets/index.jpg");
     this.state = {
       result: "Detected item",
       value: "",
@@ -67,9 +69,10 @@ export default class Realtime extends Component {
     this.setState({ status: isConnected });
   };
 
-  async _reg(img) {
-    var preder = "data:image/jpg;base64," + img;
-
+  async _reg(img, basimg) {
+    var preder = "data:image/jpg;base64," + basimg;
+    var preder2 = null;
+    var items = "";
     if (this.state.status) {
       fetch("https://nazar-server.herokuapp.com/classify_image/", {
         method: "POST",
@@ -102,7 +105,31 @@ export default class Realtime extends Component {
           });
         });
     } else {
-      alert("Internet is not available..!!");
+      //alert("Internet is not available..!!");
+      try {
+        const tfImageRecognition = new TfImageRecognition({
+          model: require("../../../assets/retrained_graph.pb"),
+          labels: require("../../../assets/retrained_labels.txt")
+        });
+
+        const results = await tfImageRecognition.recognize({
+          image: img //this.image
+        });
+
+        results.forEach(
+          result => ((preder2 = result.confidence), (items = result.name))
+        );
+
+        await tfImageRecognition.close();
+
+        this.setState({
+          result: items,
+          value: preder2 * 100 + "%"
+        });
+      } catch (err) {
+        //alert(err);
+        console.log("Error");
+      }
     }
   }
 
@@ -116,7 +143,7 @@ export default class Realtime extends Component {
         photoAsBase64: { content: data.base64, photoPath: data.uri }
       });*/
       //this._reg(data.uri.replace("file:///", ""));
-      this._reg(data.base64);
+      this._reg(data.uri.replace("file:///", ""), data.base64);
     }
   };
 
