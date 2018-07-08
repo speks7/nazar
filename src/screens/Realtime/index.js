@@ -127,8 +127,8 @@ export default class Realtime extends Component {
           value: preder2 * 100 + "%"
         });
       } catch (err) {
-        //alert(err);
-        console.log("Error");
+        alert(err);
+        //console.log("Error");
       }
     }
   }
