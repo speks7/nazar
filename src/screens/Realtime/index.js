@@ -27,7 +27,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require("../../../assets/index.jpg");
+    this.image = require("../../../assets/dumbbell.jpg");
     this.state = {
       result: "Detected item",
       value: "",
@@ -108,8 +108,8 @@ export default class Realtime extends Component {
       //alert("Internet is not available..!!");
       try {
         const tfImageRecognition = new TfImageRecognition({
-          model: require("../../../assets/retrained_graph.pb"),
-          labels: require("../../../assets/retrained_labels.txt")
+          model: require("../../../assets/tensorflow_inception_graph.pb"),
+          labels: require("../../../assets/tensorflow_labels.txt")
         });
 
         const results = await tfImageRecognition.recognize({
@@ -127,7 +127,10 @@ export default class Realtime extends Component {
           value: preder2 * 100 + "%"
         });
       } catch (err) {
-        alert(err);
+        this.setState({
+          result: "No Internet",
+          value: "Please connect to the internet"
+        });
         //console.log("Error");
       }
     }

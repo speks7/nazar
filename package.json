@@ -10,8 +10,8 @@
   "dependencies": {
     "clarifai": "^2.6.0",
     "prop-types": "^15.6.1",
-    "react": "16.3.1",
-    "react-native": "0.55.4",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
     "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera",
     "react-native-elements": "1.0.0-beta2",
     "react-native-image-picker": "^0.26.7",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "babel-jest": "22.4.0",
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "^5.0.2",
     "jest": "22.4.0",
     "react-native-dotenv": "^0.1.1",
     "react-test-renderer": "16.2.0"
