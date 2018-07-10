@@ -16,7 +16,7 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
-import { TfImageRecognition } from "react-native-tensorflow";
+//import { TfImageRecognition } from "react-native-tensorflow";
 
 import styles from "./styles";
 
@@ -30,7 +30,7 @@ export default class Realtime extends Component {
     this.image = require("../../../assets/dumbbell.jpg");
     this.state = {
       result: "Detected item",
-      value: "",
+      value: "Predicted value",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -74,6 +74,10 @@ export default class Realtime extends Component {
     var preder2 = null;
     var items = "";
     if (this.state.status) {
+      this.setState({
+        result: "Internet Connected",
+        value: "Please wait for the server"
+      });
       fetch("https://nazar-server.herokuapp.com/classify_image/", {
         method: "POST",
         headers: {
@@ -106,7 +110,11 @@ export default class Realtime extends Component {
         });
     } else {
       //alert("Internet is not available..!!");
-      try {
+      this.setState({
+        result: "No Internet",
+        value: "Please connect to the internet"
+      });
+      /*try {
         const tfImageRecognition = new TfImageRecognition({
           model: require("../../../assets/tensorflow_inception_graph.pb"),
           labels: require("../../../assets/tensorflow_labels.txt")
@@ -132,7 +140,7 @@ export default class Realtime extends Component {
           value: "Please connect to the internet"
         });
         //console.log("Error");
-      }
+      }*/
     }
   }
 
