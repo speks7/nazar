@@ -341,7 +341,7 @@ export default class Realtime extends Component {
             <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
-        <Button
+        {/*<Button
           title="Show Details"
           onPress={() => this.setState({ visible: true })}
         />
@@ -371,7 +371,7 @@ export default class Realtime extends Component {
               {this.state.result}
             </Text>
           </View>
-        </SlidingUpPanel>
+            </SlidingUpPanel>*/}
       </View>
     );
   }
