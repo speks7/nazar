@@ -101,7 +101,7 @@ android {
         applicationId "com.speks.nazar"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 4
+        versionCode 5
         versionName "1.1.1"
         ndk {
             abiFilters "armeabi-v7a", "x86"
