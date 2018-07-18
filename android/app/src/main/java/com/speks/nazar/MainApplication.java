@@ -3,7 +3,6 @@ package com.speks.nazar;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.rntensorflow.RNTensorFlowPackage;
 //import com.rntensorflow.RNTensorFlowPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -32,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNTensorFlowPackage(),
             //new RNTensorFlowPackage(),
             new SplashScreenReactPackage(),
             new VectorIconsPackage(),

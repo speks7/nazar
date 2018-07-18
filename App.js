@@ -11,7 +11,7 @@ import {
 import { RNCamera } from "react-native-camera";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Modal from "react-native-modal";
-import { TfImageRecognition } from "react-native-tensorflow";
+//import { TfImageRecognition } from "react-native-tensorflow";
 
 class BadInstagramCloneApp extends Component {
   constructor() {
