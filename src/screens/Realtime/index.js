@@ -34,6 +34,8 @@ export default class Realtime extends Component {
       result: "Detected item",
       value: "Predicted value",
       ShortInfo: "",
+      brandName: "",
+      manufacturer: "",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -98,11 +100,13 @@ export default class Realtime extends Component {
       })
         .then(response => response.json())
         .then(responseJson => {
-          //console.log(responseJson.Component);
+          console.log(responseJson.specs[0][1]);
           this.setState({
             result: responseJson.Component,
             value: responseJson.Predictions,
-            ShortInfo: responseJson.ShortInfo
+            ShortInfo: responseJson.ShortInfo,
+            brandName: responseJson.brandName,
+            manufacturer: responseJson.manufacturer
           });
         })
         .catch(error => {
@@ -388,6 +392,56 @@ export default class Realtime extends Component {
               >
                 {this.state.ShortInfo}
               </Text>
+            </View>
+            <View style={{ marginTop: 30 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginHorizontal: 40,
+                  justifyContent: "center"
+                }}
+              >
+                <Text
+                  style={{
+                    flex: 0.5,
+                    fontSize: 20,
+                    color: "rgba(216, 121, 112, 1)",
+                    fontFamily: "regular",
+                    marginLeft: 40,
+                    textAlign: "left"
+                  }}
+                >
+                  INFO
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 20,
+                  marginHorizontal: 30
+                }}
+              >
+                <View style={{ flexDirection: "row" }}>
+                  <View style={{}}>
+                    <Text style={styles.infoTypeLabel}>
+                      Brand Name
+                    </Text>
+                    <Text style={styles.infoTypeLabel}>
+                      Manufacturer
+                    </Text>
+                    <Text style={styles.infoTypeLabel}>Ethnicity</Text>
+                    <Text style={styles.infoTypeLabel}>Sign</Text>
+                    <Text style={styles.infoTypeLabel}>Religion</Text>
+                  </View>
+                  <View style={{ marginLeft: 10 }}>
+                    <Text style={styles.infoAnswerLabel}>{this.state.brandName}</Text>
+                    <Text style={styles.infoAnswerLabel}>{this.state.manufacturer}</Text>
+                    <Text style={styles.infoAnswerLabel}>White</Text>
+                    <Text style={styles.infoAnswerLabel}>Pisces</Text>
+                    <Text style={styles.infoAnswerLabel}>Catholic</Text>
+                  </View>
+                </View>
+              </View>
             </View>
           </View>
         </SlidingUpPanel>

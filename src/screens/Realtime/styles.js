@@ -125,6 +125,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 25,
     paddingBottom: 5,
+  },
+  infoTypeLabel: {
+    fontSize: 15,
+    textAlign: 'left',
+    color: 'rgba(126,123,138,1)',
+    fontFamily: 'regular',
+    paddingBottom: 10,
+  },
+  infoAnswerLabel: {
+    fontSize: 15,
+    color: '#00aeefff',
+    fontFamily: 'regular',
+    paddingBottom: 10,
   }
 });
 
