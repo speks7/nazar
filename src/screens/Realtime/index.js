@@ -36,7 +36,7 @@ export default class Realtime extends Component {
       ShortInfo: "",
       brandName: "",
       manufacturer: "",
-      specs: "",
+      specs: [["",""],["",""],["",""]],
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -101,7 +101,7 @@ export default class Realtime extends Component {
       })
         .then(response => response.json())
         .then(responseJson => {
-          console.log(responseJson.specs[0][1]);
+          //console.log(responseJson.specs[0][1]);
           this.setState({
             result: responseJson.Component,
             value: responseJson.Predictions,
@@ -143,7 +143,11 @@ export default class Realtime extends Component {
     timer.clearInterval(this);
     this.setState({
       result: "",
-      value: ""
+      value: "",
+      ShortInfo: "",
+      brandName: "",
+      manufacturer: "",
+      specs: [["",""],["",""],["",""]],
     });
   }
 
@@ -381,14 +385,16 @@ export default class Realtime extends Component {
               style={{
                 justifyContent: "center",
                 alignItems: "center",
-                marginLeft: 40
+                marginRight: 35,
+                flexDirection: "row"
               }}
             >
               <Text
                 style={{
                   fontSize: 17,
                   color: "white",
-                  textAlign: "left",
+                  textAlign: "center",
+                  marginLeft: 40,
                   fontFamily: "regular"
                 }}
               >
@@ -436,7 +442,7 @@ export default class Realtime extends Component {
                     <Text style={styles.infoTypeLabel}>
                       {this.state.specs[2][0]}
                     </Text>
-                    <Text style={styles.infoTypeLabel}>
+                    {/*<Text style={styles.infoTypeLabel}>
                       {this.state.specs[3][0]}
                     </Text>
                     <Text style={styles.infoTypeLabel}>
@@ -444,7 +450,7 @@ export default class Realtime extends Component {
                     </Text>
                     <Text style={styles.infoTypeLabel}>
                       {this.state.specs[5][0]}
-                    </Text>
+              </Text>*/}
                   </View>
                   <View style={{ marginLeft: 10 }}>
                     <Text style={styles.infoAnswerLabel}>
@@ -462,7 +468,7 @@ export default class Realtime extends Component {
                     <Text style={styles.infoAnswerLabel}>
                       {this.state.specs[2][1]}
                     </Text>
-                    <Text style={styles.infoAnswerLabel}>
+                    {/*<Text style={styles.infoAnswerLabel}>
                       {this.state.specs[3][1]}
                     </Text>
                     <Text style={styles.infoAnswerLabel}>
@@ -470,7 +476,7 @@ export default class Realtime extends Component {
                     </Text>
                     <Text style={styles.infoAnswerLabel}>
                       {this.state.specs[5][1]}
-                    </Text>
+            </Text>*/}
                   </View>
                 </View>
               </View>
