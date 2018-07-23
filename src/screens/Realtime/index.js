@@ -16,7 +16,9 @@ import { RNCamera } from "react-native-camera";
 import { Text, Icon } from "react-native-elements";
 import timer from "react-native-timer";
 import SlidingUpPanel from "rn-sliding-up-panel";
-//import { TfImageRecognition } from "react-native-tensorflow";
+
+const SCREEN_WIDTH = Dimensions.get("window").width;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
 
 import styles from "./styles";
 
@@ -31,6 +33,7 @@ export default class Realtime extends Component {
     this.state = {
       result: "Detected item",
       value: "Predicted value",
+      ShortInfo: "",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -98,7 +101,8 @@ export default class Realtime extends Component {
           //console.log(responseJson.Component);
           this.setState({
             result: responseJson.Component,
-            value: responseJson.Predictions
+            value: responseJson.Predictions,
+            ShortInfo: responseJson.ShortInfo
           });
         })
         .catch(error => {
@@ -324,9 +328,67 @@ export default class Realtime extends Component {
                 fontFamily: "bold",
                 marginTop: 80
               }}
+            />
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                marginTop: 20,
+                marginHorizontal: 40,
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 40
+              }}
             >
-              {this.state.result}
-            </Text>
+              <Text
+                style={{
+                  flex: 1,
+                  fontSize: 26,
+                  color: "#00aeefff",
+                  fontFamily: "bold"
+                }}
+              >
+                {this.state.result}
+              </Text>
+              <Text
+                style={{
+                  flex: 0.5,
+                  fontSize: 15,
+                  color: "gray",
+                  textAlign: "left",
+                  marginTop: 5
+                }}
+              />
+              <Text
+                style={{
+                  flex: 1,
+                  fontSize: 26,
+                  color: "green",
+                  fontFamily: "bold",
+                  textAlign: "right"
+                }}
+              >
+                {this.state.value}
+              </Text>
+            </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: 40
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 17,
+                  color: "white",
+                  textAlign: "left",
+                  fontFamily: "regular"
+                }}
+              >
+                {this.state.ShortInfo}
+              </Text>
+            </View>
           </View>
         </SlidingUpPanel>
       </View>
