@@ -36,6 +36,7 @@ export default class Realtime extends Component {
       ShortInfo: "",
       brandName: "",
       manufacturer: "",
+      specs: "",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -106,7 +107,8 @@ export default class Realtime extends Component {
             value: responseJson.Predictions,
             ShortInfo: responseJson.ShortInfo,
             brandName: responseJson.brandName,
-            manufacturer: responseJson.manufacturer
+            manufacturer: responseJson.manufacturer,
+            specs: responseJson.specs
           });
         })
         .catch(error => {
@@ -423,22 +425,52 @@ export default class Realtime extends Component {
               >
                 <View style={{ flexDirection: "row" }}>
                   <View style={{}}>
+                    <Text style={styles.infoTypeLabel}>Brand Name</Text>
+                    <Text style={styles.infoTypeLabel}>Manufacturer</Text>
                     <Text style={styles.infoTypeLabel}>
-                      Brand Name
+                      {this.state.specs[0][0]}
                     </Text>
                     <Text style={styles.infoTypeLabel}>
-                      Manufacturer
+                      {this.state.specs[1][0]}
                     </Text>
-                    <Text style={styles.infoTypeLabel}>Ethnicity</Text>
-                    <Text style={styles.infoTypeLabel}>Sign</Text>
-                    <Text style={styles.infoTypeLabel}>Religion</Text>
+                    <Text style={styles.infoTypeLabel}>
+                      {this.state.specs[2][0]}
+                    </Text>
+                    <Text style={styles.infoTypeLabel}>
+                      {this.state.specs[3][0]}
+                    </Text>
+                    <Text style={styles.infoTypeLabel}>
+                      {this.state.specs[4][0]}
+                    </Text>
+                    <Text style={styles.infoTypeLabel}>
+                      {this.state.specs[5][0]}
+                    </Text>
                   </View>
                   <View style={{ marginLeft: 10 }}>
-                    <Text style={styles.infoAnswerLabel}>{this.state.brandName}</Text>
-                    <Text style={styles.infoAnswerLabel}>{this.state.manufacturer}</Text>
-                    <Text style={styles.infoAnswerLabel}>White</Text>
-                    <Text style={styles.infoAnswerLabel}>Pisces</Text>
-                    <Text style={styles.infoAnswerLabel}>Catholic</Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.brandName}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.manufacturer}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[0][1]}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[1][1]}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[2][1]}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[3][1]}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[4][1]}
+                    </Text>
+                    <Text style={styles.infoAnswerLabel}>
+                      {this.state.specs[5][1]}
+                    </Text>
                   </View>
                 </View>
               </View>
