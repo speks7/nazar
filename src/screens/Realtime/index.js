@@ -114,33 +114,6 @@ export default class Realtime extends Component {
         result: "No Internet",
         value: "Please connect to the internet"
       });
-      /*try {
-        const tfImageRecognition = new TfImageRecognition({
-          model: require("../../../assets/tensorflow_inception_graph.pb"),
-          labels: require("../../../assets/tensorflow_labels.txt")
-        });
-
-        const results = await tfImageRecognition.recognize({
-          image: img //this.image
-        });
-
-        results.forEach(
-          result => ((preder2 = result.confidence), (items = result.name))
-        );
-
-        await tfImageRecognition.close();
-
-        this.setState({
-          result: items,
-          value: preder2 * 100 + "%"
-        });
-      } catch (err) {
-        this.setState({
-          result: "No Internet",
-          value: "Please connect to the internet"
-        });
-        //console.log("Error");
-      }*/
     }
   }
 
@@ -148,12 +121,6 @@ export default class Realtime extends Component {
     if (this.camera) {
       const options = { quality: 0.1, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      //console.log(data.uri);
-      /*this.setState({
-        ...this.state,
-        photoAsBase64: { content: data.base64, photoPath: data.uri }
-      });*/
-      //this._reg(data.uri.replace("file:///", ""));
       this._reg(data.uri.replace("file:///", ""), data.base64);
     }
   };
@@ -341,7 +308,7 @@ export default class Realtime extends Component {
             <Icon iconStyle={styles.cameraIcon} name="switch-camera" />
           </TouchableOpacity>
         </View>
-        {/*<Button
+        <Button
           title="Show Details"
           onPress={() => this.setState({ visible: true })}
         />
@@ -355,23 +322,13 @@ export default class Realtime extends Component {
                 fontSize: 26,
                 color: "#00aeefff",
                 fontFamily: "bold",
-                marginBottom: 70
-              }}
-            >
-              NAZAR
-            </Text>
-            <Text
-              style={{
-                fontSize: 26,
-                color: "#00aeefff",
-                fontFamily: "bold",
-                marginBottom: 40
+                marginTop: 80
               }}
             >
               {this.state.result}
             </Text>
           </View>
-            </SlidingUpPanel>*/}
+        </SlidingUpPanel>
       </View>
     );
   }
