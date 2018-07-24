@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   cameraIcon: {
     fontSize: 45,
     color: 'white',
-    marginBottom: 20
+    marginBottom: 5
   },
   animator: {
     position: 'absolute',

@@ -33,15 +33,17 @@ export default class Realtime extends Component {
     this.state = {
       result: "Detected item",
       value: "Predicted value",
-      ShortInfo: "Information about the component",
-      brandName: "",
-      manufacturer: "",
+      ShortInfo: "",
+      brandName: "Fetch detail",
+      manufacturer: "Fetch detail",
       specs: [["", ""], ["", ""], ["", ""]],
+      octopartUrl: "",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
-      visible: false
+      visible: false,
+      detail: false
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
@@ -103,12 +105,14 @@ export default class Realtime extends Component {
         .then(responseJson => {
           //console.log(responseJson.specs[0][1]);
           this.setState({
+            detail: true,
             result: responseJson.Component,
             value: responseJson.Predictions,
             ShortInfo: responseJson.ShortInfo,
             brandName: responseJson.brandName,
             manufacturer: responseJson.manufacturer,
-            specs: responseJson.specs
+            specs: responseJson.specs,
+            octopartUrl: responseJson.octopartUrl
           });
         })
         .catch(error => {
@@ -144,10 +148,11 @@ export default class Realtime extends Component {
     this.setState({
       result: "",
       value: "",
-      ShortInfo: "Information about the component",
+      ShortInfo: "",
       brandName: "",
       manufacturer: "",
-      specs: [["", ""], ["", ""], ["", ""]]
+      specs: [["", ""], ["", ""], ["", ""]],
+      detail: false
     });
   }
 
@@ -472,7 +477,7 @@ export default class Realtime extends Component {
               >
                 <Text
                   style={{
-                    fontSize: 18,
+                    fontSize: 17,
                     color: "white",
                     fontFamily: "regular",
                     marginLeft: 20,
@@ -483,7 +488,7 @@ export default class Realtime extends Component {
                 </Text>
               </View>
             </View>
-            <View style={{ marginTop: 20 }}>
+            <View style={{ marginTop: 10 }}>
               <View
                 style={{
                   flexDirection: "row",
@@ -495,14 +500,8 @@ export default class Realtime extends Component {
                   iconStyle={styles.octopart}
                   type="font-awesome"
                   name="info-circle"
-                  size={50}
-                  onPress={() =>
-                    Linking.openURL(
-                      `https://en.m.wikipedia.org/w/index.php?search=${
-                        this.state.result
-                      }&title=Special:Search&fulltext=1`
-                    )
-                  }
+                  size={40}
+                  onPress={() => Linking.openURL(this.state.octopartUrl)}
                 />
               </View>
             </View>
