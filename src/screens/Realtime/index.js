@@ -33,10 +33,10 @@ export default class Realtime extends Component {
     this.state = {
       result: "Detected item",
       value: "Predicted value",
-      ShortInfo: "",
+      ShortInfo: "Information about the component",
       brandName: "",
       manufacturer: "",
-      specs: [["",""],["",""],["",""]],
+      specs: [["", ""], ["", ""], ["", ""]],
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -144,10 +144,10 @@ export default class Realtime extends Component {
     this.setState({
       result: "",
       value: "",
-      ShortInfo: "",
+      ShortInfo: "Information about the component",
       brandName: "",
       manufacturer: "",
-      specs: [["",""],["",""],["",""]],
+      specs: [["", ""], ["", ""], ["", ""]]
     });
   }
 
@@ -411,11 +411,10 @@ export default class Realtime extends Component {
               >
                 <Text
                   style={{
-                    flex: 0.5,
                     fontSize: 20,
                     color: "rgba(216, 121, 112, 1)",
                     fontFamily: "regular",
-                    marginLeft: 40,
+                    marginLeft: 20,
                     textAlign: "left"
                   }}
                 >
@@ -442,15 +441,6 @@ export default class Realtime extends Component {
                     <Text style={styles.infoTypeLabel}>
                       {this.state.specs[2][0]}
                     </Text>
-                    {/*<Text style={styles.infoTypeLabel}>
-                      {this.state.specs[3][0]}
-                    </Text>
-                    <Text style={styles.infoTypeLabel}>
-                      {this.state.specs[4][0]}
-                    </Text>
-                    <Text style={styles.infoTypeLabel}>
-                      {this.state.specs[5][0]}
-              </Text>*/}
                   </View>
                   <View style={{ marginLeft: 10 }}>
                     <Text style={styles.infoAnswerLabel}>
@@ -468,17 +458,52 @@ export default class Realtime extends Component {
                     <Text style={styles.infoAnswerLabel}>
                       {this.state.specs[2][1]}
                     </Text>
-                    {/*<Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[3][1]}
-                    </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[4][1]}
-                    </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[5][1]}
-            </Text>*/}
                   </View>
                 </View>
+              </View>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginHorizontal: 40,
+                  justifyContent: "center"
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: "white",
+                    fontFamily: "regular",
+                    marginLeft: 20,
+                    textAlign: "left"
+                  }}
+                >
+                  For Further Details:
+                </Text>
+              </View>
+            </View>
+            <View style={{ marginTop: 20 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginHorizontal: 40,
+                  justifyContent: "center"
+                }}
+              >
+                <Icon
+                  iconStyle={styles.octopart}
+                  type="font-awesome"
+                  name="info-circle"
+                  size={50}
+                  onPress={() =>
+                    Linking.openURL(
+                      `https://en.m.wikipedia.org/w/index.php?search=${
+                        this.state.result
+                      }&title=Special:Search&fulltext=1`
+                    )
+                  }
+                />
               </View>
             </View>
           </View>

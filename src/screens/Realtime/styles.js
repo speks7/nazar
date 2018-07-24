@@ -120,6 +120,10 @@ const styles = StyleSheet.create({
       color: '#d62d20',
       paddingLeft: 22,       
   },
+  octopart: {
+    color: 'rgba(216, 121, 112, 1)', 
+    paddingLeft: 15,               
+  },
   linkContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
