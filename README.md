@@ -6,12 +6,12 @@
 
 ## Overview
 
-Nazar is an app built with react-native with a little spice of Tensorflow InveptionV3 which allows the user to take a picture using the camera or fetch image from gallery to identify the component with the predicted percentage ratio, thus using image processing and algorithm to segment them after detection.
+Nazar is an app built with react-native with a little spice of Tensorflow InveptionV3 which allows the user to take a picture using the camera or fetch image from gallery to identify the component with the predicted percentage ratio, thus using image processing and algorithm to segment them after detection along with fetching description about the detected component using Octopart API whose response is sent from the nazar-server itself.
 
-It is done with both Clarifai API and Tensorflow frozen graph server deployed in heroku to deduce with internet along with option to look for feeds from internet within the app. The Option to fetch the details about detected component is being worked on and will be pushed in opcoming version.
+It is done with both Clarifai API and Tensorflow frozen graph server deployed in heroku to deduce with internet along with option to look for feeds from internet within the app. The Option to fetch the details about detected component is setup but needs furnishing.
 
 <p align="center">
-    <a href="https://play.google.com/store/apps/details?id=com.speks.nazar" target="_blank"><img src="http://i.imgur.com/D5B4zOT.png" height="75"/></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://itunes.apple.com/us/app/" target="_blank"><img src="http://i.imgur.com/Akywpc7.png" height="75"/></a>
+    <a href="https://play.google.com/store/apps/details?id=com.speks.nazar" target="_blank"><img src="http://i.imgur.com/D5B4zOT.png" height="75"/></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://play.google.com/store/apps/details?id=com.speks.nazar" target="_blank"><img src="http://i.imgur.com/Akywpc7.png" height="75"/></a>
 </p>
 
 <p align="center">
@@ -28,11 +28,6 @@ Clone the source locally:
 ```
 $ git clone https://github.com/aryaminus/nazar
 $ cd nazar
-```
-
-**Create a .env file with**
-```
-CLARIFAY_KEY="your clarifai api key"
 ```
 
 **Start the application in development mode**
