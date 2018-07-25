@@ -234,6 +234,7 @@ class Home extends Component {
                             <Text style={styles.infoTypeLabel}>Gallery</Text>
                             <Text style={styles.infoTypeLabel}>Tensorflow</Text>
                             <Text style={styles.infoTypeLabel}>Prediction</Text>
+                            <Text style={styles.infoTypeLabel}>Octopart</Text>
                           </View>
                           <View style={{ marginLeft: 10 }}>
                             <Text style={styles.infoAnswerLabel}>
@@ -247,6 +248,9 @@ class Home extends Component {
                             </Text>
                             <Text style={styles.infoAnswerLabel}>
                               Show predicted name and value
+                            </Text>
+                            <Text style={styles.infoAnswerLabel}>
+                              Show description of component
                             </Text>
                           </View>
                         </View>
@@ -287,9 +291,7 @@ class Home extends Component {
                 buttonStyle={{ backgroundColor: "transparent" }}
                 underlayColor="transparent"
                 onPress={() =>
-                  Linking.openURL(
-                    `https://github.com/aryaminus/nazar`
-                  )
+                  Linking.openURL(`https://github.com/aryaminus/nazar`)
                 }
               />
             </View>
