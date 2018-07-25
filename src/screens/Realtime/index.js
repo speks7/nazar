@@ -34,10 +34,10 @@ export default class Realtime extends Component {
       result: "Detected item",
       value: "Predicted value",
       ShortInfo: "",
-      brandName: "Fetch detail",
-      manufacturer: "Fetch detail",
-      specs: [["", ""], ["", ""], ["", ""]],
-      octopartUrl: "",
+      brandName: "null",
+      manufacturer: "null",
+      specs: [["Material", "null"], ["Plating", "null"], ["Lifestatus", "null"], ["RoHS", "null"]],
+      octopartUrl: "https://github.com/aryaminus/nazar",
       flashMode: RNCamera.Constants.FlashMode.off,
       flash: "auto",
       showFlashOptions: false,
@@ -149,9 +149,9 @@ export default class Realtime extends Component {
       result: "",
       value: "",
       ShortInfo: "",
-      brandName: "",
-      manufacturer: "",
-      specs: [["", ""], ["", ""], ["", ""]],
+      brandName: "null",
+      manufacturer: "null",
+      specs: [["Material", "null"], ["Plating", "null"], ["Lifestatus", "null"], ["RoHS", "null"]],
       detail: false
     });
   }
@@ -437,15 +437,11 @@ export default class Realtime extends Component {
                   <View style={{}}>
                     <Text style={styles.infoTypeLabel}>Brand Name</Text>
                     <Text style={styles.infoTypeLabel}>Manufacturer</Text>
-                    <Text style={styles.infoTypeLabel}>
-                      {this.state.specs[0][0]}
-                    </Text>
-                    <Text style={styles.infoTypeLabel}>
-                      {this.state.specs[1][0]}
-                    </Text>
-                    <Text style={styles.infoTypeLabel}>
-                      {this.state.specs[2][0]}
-                    </Text>
+                    {this.state.specs.map((item, key) => (
+                      <Text key={key} style={styles.infoTypeLabel}>
+                        {item[0]}
+                      </Text>
+                    ))}
                   </View>
                   <View style={{ marginLeft: 10 }}>
                     <Text style={styles.infoAnswerLabel}>
@@ -454,15 +450,11 @@ export default class Realtime extends Component {
                     <Text style={styles.infoAnswerLabel}>
                       {this.state.manufacturer}
                     </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[0][1]}
-                    </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[1][1]}
-                    </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.specs[2][1]}
-                    </Text>
+                    {this.state.specs.map((item, key) => (
+                      <Text key={key} style={styles.infoAnswerLabel}>
+                        {item[1]}
+                      </Text>
+                    ))}
                   </View>
                 </View>
               </View>
