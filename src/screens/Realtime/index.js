@@ -38,7 +38,7 @@ export default class Realtime extends Component {
       manufacturer: "null",
       specs: [["Material", "null"], ["Plating", "null"], ["Lifestatus", "null"], ["RoHS", "null"]],
       octopartUrl: "https://github.com/aryaminus/nazar",
-      flashMode: RNCamera.Constants.FlashMode.off,
+      flashMode: RNCamera.Constants.FlashMode.auto,
       flash: "auto",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
