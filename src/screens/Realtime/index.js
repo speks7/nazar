@@ -36,10 +36,15 @@ export default class Realtime extends Component {
       ShortInfo: "",
       brandName: "null",
       manufacturer: "null",
-      specs: [["Material", "null"], ["Plating", "null"], ["Lifestatus", "null"], ["RoHS", "null"]],
+      specs: [
+        ["Material", "null"],
+        ["Plating", "null"],
+        ["Lifestatus", "null"],
+        ["RoHS", "null"]
+      ],
       octopartUrl: "https://github.com/aryaminus/nazar",
-      flashMode: RNCamera.Constants.FlashMode.auto,
-      flash: "auto",
+      flashMode: RNCamera.Constants.FlashMode.off,
+      flash: "off",
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
       visible: false,
@@ -52,7 +57,7 @@ export default class Realtime extends Component {
     this.showFlashOptionsBlock = this.showFlashOptionsBlock.bind(this);
     this.switchCamera = this.switchCamera.bind(this);
     timer.setInterval(this, "takePicture", () => this.takePicture(), 1000);
-    timer.setInterval(this, "clearInterval", () => this.clearInterval(), 30000);
+    //timer.setInterval(this, "clearInterval", () => this.clearInterval(), 30000);
   }
 
   componentDidMount() {
@@ -151,7 +156,12 @@ export default class Realtime extends Component {
       ShortInfo: "",
       brandName: "null",
       manufacturer: "null",
-      specs: [["Material", "null"], ["Plating", "null"], ["Lifestatus", "null"], ["RoHS", "null"]],
+      specs: [
+        ["Material", "null"],
+        ["Plating", "null"],
+        ["Lifestatus", "null"],
+        ["RoHS", "null"]
+      ],
       detail: false
     });
   }
@@ -335,6 +345,171 @@ export default class Realtime extends Component {
           visible={this.state.visible}
           onRequestClose={() => this.setState({ visible: false })}
         >
+          {this.state.detail && (
+            <View style={styles.slider}>
+              <Text
+                style={{
+                  fontSize: 26,
+                  color: "#00aeefff",
+                  fontFamily: "bold",
+                  marginTop: 80
+                }}
+              />
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  marginTop: 20,
+                  marginHorizontal: 40,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: 40
+                }}
+              >
+                <Text
+                  style={{
+                    flex: 1,
+                    fontSize: 26,
+                    color: "#00aeefff",
+                    fontFamily: "bold"
+                  }}
+                >
+                  {this.state.result}
+                </Text>
+                <Text
+                  style={{
+                    flex: 0.5,
+                    fontSize: 15,
+                    color: "gray",
+                    textAlign: "left",
+                    marginTop: 5
+                  }}
+                />
+                <Text
+                  style={{
+                    flex: 1,
+                    fontSize: 26,
+                    color: "green",
+                    fontFamily: "bold",
+                    textAlign: "right"
+                  }}
+                >
+                  {this.state.value}
+                </Text>
+              </View>
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginRight: 35,
+                  flexDirection: "row"
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 17,
+                    color: "white",
+                    textAlign: "center",
+                    marginLeft: 40,
+                    fontFamily: "regular"
+                  }}
+                >
+                  {this.state.ShortInfo}
+                </Text>
+              </View>
+              <View style={{ marginTop: 30 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginHorizontal: 40,
+                    justifyContent: "center"
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: "rgba(216, 121, 112, 1)",
+                      fontFamily: "regular",
+                      marginLeft: 20,
+                      textAlign: "left"
+                    }}
+                  >
+                    INFO
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginTop: 20,
+                    marginHorizontal: 30
+                  }}
+                >
+                  <View style={{ flexDirection: "row" }}>
+                    <View style={{}}>
+                      <Text style={styles.infoTypeLabel}>Brand Name</Text>
+                      <Text style={styles.infoTypeLabel}>Manufacturer</Text>
+                      {this.state.specs.map((item, key) => (
+                        <Text key={key} style={styles.infoTypeLabel}>
+                          {item[0]}
+                        </Text>
+                      ))}
+                    </View>
+                    <View style={{ marginLeft: 10 }}>
+                      <Text style={styles.infoAnswerLabel}>
+                        {this.state.brandName}
+                      </Text>
+                      <Text style={styles.infoAnswerLabel}>
+                        {this.state.manufacturer}
+                      </Text>
+                      {this.state.specs.map((item, key) => (
+                        <Text key={key} style={styles.infoAnswerLabel}>
+                          {item[1]}
+                        </Text>
+                      ))}
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View style={{ marginTop: 20 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginHorizontal: 40,
+                    justifyContent: "center"
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 17,
+                      color: "white",
+                      fontFamily: "regular",
+                      marginLeft: 20,
+                      textAlign: "left"
+                    }}
+                  >
+                    For Further Details:
+                  </Text>
+                </View>
+              </View>
+              <View style={{ marginTop: 10 }}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    marginHorizontal: 40,
+                    justifyContent: "center"
+                  }}
+                >
+                  <Icon
+                    iconStyle={styles.octopart}
+                    type="font-awesome"
+                    name="info-circle"
+                    size={40}
+                    onPress={() => Linking.openURL(this.state.octopartUrl)}
+                  />
+                </View>
+              </View>
+            </View>
+          )}
           <View style={styles.slider}>
             <Text
               style={{
@@ -385,117 +560,6 @@ export default class Realtime extends Component {
               >
                 {this.state.value}
               </Text>
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                marginRight: 35,
-                flexDirection: "row"
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 17,
-                  color: "white",
-                  textAlign: "center",
-                  marginLeft: 40,
-                  fontFamily: "regular"
-                }}
-              >
-                {this.state.ShortInfo}
-              </Text>
-            </View>
-            <View style={{ marginTop: 30 }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginHorizontal: 40,
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 20,
-                    color: "rgba(216, 121, 112, 1)",
-                    fontFamily: "regular",
-                    marginLeft: 20,
-                    textAlign: "left"
-                  }}
-                >
-                  INFO
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginTop: 20,
-                  marginHorizontal: 30
-                }}
-              >
-                <View style={{ flexDirection: "row" }}>
-                  <View style={{}}>
-                    <Text style={styles.infoTypeLabel}>Brand Name</Text>
-                    <Text style={styles.infoTypeLabel}>Manufacturer</Text>
-                    {this.state.specs.map((item, key) => (
-                      <Text key={key} style={styles.infoTypeLabel}>
-                        {item[0]}
-                      </Text>
-                    ))}
-                  </View>
-                  <View style={{ marginLeft: 10 }}>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.brandName}
-                    </Text>
-                    <Text style={styles.infoAnswerLabel}>
-                      {this.state.manufacturer}
-                    </Text>
-                    {this.state.specs.map((item, key) => (
-                      <Text key={key} style={styles.infoAnswerLabel}>
-                        {item[1]}
-                      </Text>
-                    ))}
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View style={{ marginTop: 20 }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginHorizontal: 40,
-                  justifyContent: "center"
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 17,
-                    color: "white",
-                    fontFamily: "regular",
-                    marginLeft: 20,
-                    textAlign: "left"
-                  }}
-                >
-                  For Further Details:
-                </Text>
-              </View>
-            </View>
-            <View style={{ marginTop: 10 }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginHorizontal: 40,
-                  justifyContent: "center"
-                }}
-              >
-                <Icon
-                  iconStyle={styles.octopart}
-                  type="font-awesome"
-                  name="info-circle"
-                  size={40}
-                  onPress={() => Linking.openURL(this.state.octopartUrl)}
-                />
-              </View>
             </View>
           </View>
         </SlidingUpPanel>
