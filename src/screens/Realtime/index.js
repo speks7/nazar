@@ -91,6 +91,7 @@ export default class Realtime extends Component {
         result: "Internet Connected",
         value: "Please wait for the server"
       });
+      //fetch("https://192.168.1.72:8080/classify_image/", {
       fetch("https://nazar-server.herokuapp.com/classify_image/", {
         method: "POST",
         headers: {
