@@ -33,6 +33,7 @@ export default class Realtime extends Component {
     this.state = {
       result: "Detected item",
       value: "Predicted value",
+      state: "Verifying connection",
       ShortInfo: "",
       brandName: "null",
       manufacturer: "null",
@@ -48,7 +49,8 @@ export default class Realtime extends Component {
       showFlashOptions: false,
       type: RNCamera.Constants.Type.back,
       visible: false,
-      detail: false
+      detail: false,
+      nodetail: true
     };
     //this.alreadySelectedImages = this.props.navigation.state.params.alreadySelectedImages;
     this.goBack = this.goBack.bind(this);
@@ -88,8 +90,7 @@ export default class Realtime extends Component {
     var items = "";
     if (this.state.status) {
       this.setState({
-        result: "Internet Connected",
-        value: "Please wait for the server"
+        state: "Image captured"
       });
       //fetch("https://192.168.1.72:8080/classify_image/", {
       fetch("https://nazar-server.herokuapp.com/classify_image/", {
@@ -112,6 +113,7 @@ export default class Realtime extends Component {
           //console.log(responseJson.specs[0][1]);
           this.setState({
             detail: true,
+            nodetail: false,
             result: responseJson.Component,
             value: responseJson.Predictions,
             ShortInfo: responseJson.ShortInfo,
@@ -124,15 +126,13 @@ export default class Realtime extends Component {
         .catch(error => {
           //console.error(error);
           this.setState({
-            result: "Image size too big",
-            value: "Get closer to the component"
+            state: "Server busy"
           });
         });
     } else {
       //alert("Internet is not available..!!");
       this.setState({
-        result: "No Internet",
-        value: "Please connect to the internet"
+        state: "No Internet"
       });
     }
   }
@@ -163,7 +163,8 @@ export default class Realtime extends Component {
         ["Lifestatus", "null"],
         ["RoHS", "null"]
       ],
-      detail: false
+      detail: false,
+      nodetail: true
     });
   }
 
@@ -279,30 +280,61 @@ export default class Realtime extends Component {
         />
         <View style={styles.cameraClickBlock}>
           <View style={{ flex: 1 }} />
+
           <Animated.View style={[styles.animator]}>
             <ScrollView style={{ height: 100 }}>
-              <Text
-                style={{
-                  fontSize: 26,
-                  color: "#fff",
-                  fontFamily: "bold",
-                  textAlign: "center",
-                  marginTop: 10
-                }}
-              >
-                {this.state.result}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 22,
-                  color: "#fff",
-                  fontFamily: "bold",
-                  textAlign: "center",
-                  marginTop: 10
-                }}
-              >
-                {this.state.value}
-              </Text>
+              {this.state.detail && (
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 26,
+                      color: "#fff",
+                      fontFamily: "bold",
+                      textAlign: "center",
+                      marginTop: 10
+                    }}
+                  >
+                    {this.state.result}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      color: "#fff",
+                      fontFamily: "bold",
+                      textAlign: "center",
+                      marginTop: 10
+                    }}
+                  >
+                    {this.state.value}
+                  </Text>
+                </View>
+              )}
+              {this.state.nodetail && (
+                <View>
+                  <Text
+                    style={{
+                      fontSize: 26,
+                      color: "#fff",
+                      fontFamily: "bold",
+                      textAlign: "center",
+                      marginTop: 10
+                    }}
+                  >
+                    {this.state.state}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      color: "#fff",
+                      fontFamily: "bold",
+                      textAlign: "center",
+                      marginTop: 10
+                    }}
+                  >
+                    Please check your connection
+                  </Text>
+                </View>
+              )}
             </ScrollView>
           </Animated.View>
           <Icon
@@ -355,7 +387,9 @@ export default class Realtime extends Component {
                   fontFamily: "bold",
                   marginTop: 80
                 }}
-              />
+              >
+                {this.state.state}
+              </Text>
               <View
                 style={{
                   flex: 1,
@@ -511,58 +545,21 @@ export default class Realtime extends Component {
               </View>
             </View>
           )}
-          <View style={styles.slider}>
-            <Text
-              style={{
-                fontSize: 26,
-                color: "#00aeefff",
-                fontFamily: "bold",
-                marginTop: 80
-              }}
-            />
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                marginTop: 20,
-                marginHorizontal: 40,
-                justifyContent: "center",
-                alignItems: "center",
-                marginBottom: 40
-              }}
-            >
+          {this.state.nodetail && (
+            <View style={styles.slider}>
               <Text
                 style={{
-                  flex: 1,
                   fontSize: 26,
                   color: "#00aeefff",
-                  fontFamily: "bold"
-                }}
-              >
-                {this.state.result}
-              </Text>
-              <Text
-                style={{
-                  flex: 0.5,
-                  fontSize: 15,
-                  color: "gray",
-                  textAlign: "left",
-                  marginTop: 5
-                }}
-              />
-              <Text
-                style={{
-                  flex: 1,
-                  fontSize: 26,
-                  color: "green",
                   fontFamily: "bold",
-                  textAlign: "right"
+                  marginTop: 80,
+                  marginBottom: 10
                 }}
               >
-                {this.state.value}
+                {this.state.state}
               </Text>
             </View>
-          </View>
+          )}
         </SlidingUpPanel>
       </View>
     );
