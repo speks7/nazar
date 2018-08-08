@@ -187,7 +187,7 @@ class Home extends Component {
                           textAlign: "right"
                         }}
                       >
-                        v1.2.1
+                        v1.2.2
                       </Text>
                     </View>
                     <View
