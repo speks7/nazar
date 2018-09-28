@@ -29,7 +29,7 @@ export default class Realtime extends Component {
 
   constructor(props) {
     super(props);
-    this.image = require("../../../assets/dumbbell.jpg");
+    //this.image = require("../../../assets/dumbbell.jpg");
     this.state = {
       result: "Detected item",
       value: "Predicted value",
