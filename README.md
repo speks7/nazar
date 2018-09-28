@@ -40,14 +40,15 @@ $ cd nazar
 ```
 npm install
 react-native link
-react-native run android
+react-native run-android
+react-native run-android
 ```
 **or for VS-Code:**
 ```
 npm install
 react-native link
 ```
-then press F1 or Fn+F1 and React Native:Run Android on Device 
+then press F1 or Fn+F1 and React Native:Run Android on Device or React Native:Run iOS on Simulator
 
 ## References
 1. <a href="https://github.com/agrcrobles/react-native-live-translator" target="_blank">react-native-live-translator</a>
