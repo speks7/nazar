@@ -10,6 +10,8 @@ Nazar is an app built with react-native with a little spice of Tensorflow Invept
 
 It is done with both Clarifai API and Tensorflow frozen graph server deployed in heroku to deduce with internet along with option to look for feeds from internet within the app. The Option to fetch the details about detected component is setup but needs furnishing.
 
+**Run both on iOS and Android**
+
 ## Demo
 
 [![Nazar demo](https://i.imgur.com/wsGt7Aw.gif)](https://goo.gl/9FFbS6)
@@ -41,7 +43,7 @@ $ cd nazar
 npm install
 react-native link
 react-native run-android
-react-native run-android
+react-native run-ios
 ```
 **or for VS-Code:**
 ```
