@@ -225,7 +225,7 @@ class Home extends Component {
                         style={{
                           flexDirection: "row",
                           marginTop: 10,
-                          marginHorizontal: 15
+                          marginHorizontal: 6
                         }}
                       >
                         <View style={{ flex: 1, flexDirection: "row" }}>
@@ -236,7 +236,7 @@ class Home extends Component {
                             <Text style={styles.infoTypeLabel}>Prediction</Text>
                             <Text style={styles.infoTypeLabel}>Octopart</Text>
                           </View>
-                          <View style={{ marginLeft: 8 }}>
+                          <View style={{ marginLeft: 4 }}>
                             <Text style={styles.infoAnswerLabel}>
                               Take a picture using native camera
                             </Text>
