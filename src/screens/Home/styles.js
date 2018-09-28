@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     backgroundColor: "white",
-    width: SCREEN_WIDTH - 30,
+    width: SCREEN_WIDTH - 8,
     borderRadius: 10,
     paddingTop: 32,
     paddingBottom: 32,

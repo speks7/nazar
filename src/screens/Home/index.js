@@ -201,7 +201,7 @@ class Home extends Component {
                         style={{
                           fontSize: 15,
                           color: "black",
-                          fontFamily: "normal"
+                          fontWeight: "normal"
                         }}
                       >
                         An electronic component detection app which allows the
@@ -215,7 +215,7 @@ class Home extends Component {
                         style={{
                           fontSize: 15,
                           color: "rgba(216, 121, 112, 1)",
-                          fontFamily: "normal",
+                          fontWeight: "normal",
                           marginLeft: 40
                         }}
                       >
@@ -225,7 +225,7 @@ class Home extends Component {
                         style={{
                           flexDirection: "row",
                           marginTop: 10,
-                          marginHorizontal: 30
+                          marginHorizontal: 15
                         }}
                       >
                         <View style={{ flex: 1, flexDirection: "row" }}>
@@ -236,7 +236,7 @@ class Home extends Component {
                             <Text style={styles.infoTypeLabel}>Prediction</Text>
                             <Text style={styles.infoTypeLabel}>Octopart</Text>
                           </View>
-                          <View style={{ marginLeft: 10 }}>
+                          <View style={{ marginLeft: 8 }}>
                             <Text style={styles.infoAnswerLabel}>
                               Take a picture using native camera
                             </Text>
