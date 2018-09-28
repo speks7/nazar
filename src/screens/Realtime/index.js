@@ -289,7 +289,7 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 26,
                       color: "#fff",
-                      fontFamily: "bold",
+                      fontWeight: "bold",
                       textAlign: "center",
                       marginTop: 10
                     }}
@@ -300,7 +300,7 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 22,
                       color: "#fff",
-                      fontFamily: "bold",
+                      fontWeight: "bold",
                       textAlign: "center",
                       marginTop: 10
                     }}
@@ -315,7 +315,7 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 26,
                       color: "#fff",
-                      fontFamily: "bold",
+                      fontWeight: "bold",
                       textAlign: "center",
                       marginTop: 10
                     }}
@@ -326,7 +326,7 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 22,
                       color: "#fff",
-                      fontFamily: "bold",
+                      fontWeight: "bold",
                       textAlign: "center",
                       marginTop: 10
                     }}
@@ -384,7 +384,7 @@ export default class Realtime extends Component {
                 style={{
                   fontSize: 26,
                   color: "#00aeefff",
-                  fontFamily: "bold",
+                  fontWeight: "bold",
                   marginTop: 80
                 }}
               >
@@ -406,7 +406,7 @@ export default class Realtime extends Component {
                     flex: 1,
                     fontSize: 26,
                     color: "#00aeefff",
-                    fontFamily: "bold"
+                    fontWeight: "bold"
                   }}
                 >
                   {this.state.result}
@@ -425,7 +425,7 @@ export default class Realtime extends Component {
                     flex: 1,
                     fontSize: 26,
                     color: "green",
-                    fontFamily: "bold",
+                    fontWeight: "bold",
                     textAlign: "right"
                   }}
                 >
@@ -446,7 +446,6 @@ export default class Realtime extends Component {
                     color: "white",
                     textAlign: "center",
                     marginLeft: 40,
-                    fontFamily: "regular"
                   }}
                 >
                   {this.state.ShortInfo}
@@ -464,7 +463,6 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 20,
                       color: "rgba(216, 121, 112, 1)",
-                      fontFamily: "regular",
                       marginLeft: 20,
                       textAlign: "left"
                     }}
@@ -517,7 +515,6 @@ export default class Realtime extends Component {
                     style={{
                       fontSize: 17,
                       color: "white",
-                      fontFamily: "regular",
                       marginLeft: 20,
                       textAlign: "left"
                     }}
@@ -551,7 +548,7 @@ export default class Realtime extends Component {
                 style={{
                   fontSize: 26,
                   color: "#00aeefff",
-                  fontFamily: "bold",
+                  fontWeight: "bold",
                   marginTop: 80,
                   marginBottom: 10
                 }}

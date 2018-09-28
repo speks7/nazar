@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     fontSize: 24,
-    fontFamily: "light",
+    //fontFamily: "light",
     backgroundColor: "transparent",
     opacity: 0.54
   },
@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
   titleText: {
     color: "black",
     fontSize: 15,
-    fontFamily: "regular"
   },
   helpContainer: {
     height: 64,
@@ -104,13 +103,11 @@ const styles = StyleSheet.create({
   infoTypeLabel: {
     fontSize: 15,
     color: 'rgba(126,123,138,1)',
-    fontFamily: 'regular',
     paddingBottom: 5,
   },
   infoAnswerLabel: {
     fontSize: 15,
     color: 'black',
-    fontFamily: 'regular',
     paddingBottom: 5,
   }
 });

@@ -173,7 +173,7 @@ class Home extends Component {
                         style={{
                           fontSize: 26,
                           color: "#00aeefff",
-                          fontFamily: "bold"
+                          fontWeight: "normal"
                         }}
                       >
                         NAZAR
@@ -183,7 +183,7 @@ class Home extends Component {
                           flex: 1,
                           fontSize: 26,
                           color: "green",
-                          fontFamily: "bold",
+                          fontWeight: "normal",
                           textAlign: "right"
                         }}
                       >
@@ -201,7 +201,7 @@ class Home extends Component {
                         style={{
                           fontSize: 15,
                           color: "black",
-                          fontFamily: "regular"
+                          fontFamily: "normal"
                         }}
                       >
                         An electronic component detection app which allows the
@@ -215,7 +215,7 @@ class Home extends Component {
                         style={{
                           fontSize: 15,
                           color: "rgba(216, 121, 112, 1)",
-                          fontFamily: "regular",
+                          fontFamily: "normal",
                           marginLeft: 40
                         }}
                       >

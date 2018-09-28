@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   ButtonText: {
-    fontFamily: 'bold',
+    fontWeight: 'bold',
     fontSize: 20,
     color: "white"
   },
@@ -134,13 +134,11 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'left',
     color: 'rgba(126,123,138,1)',
-    fontFamily: 'regular',
     paddingBottom: 10,
   },
   infoAnswerLabel: {
     fontSize: 15,
     color: '#00aeefff',
-    fontFamily: 'regular',
     paddingBottom: 10,
   }
 });
