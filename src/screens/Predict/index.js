@@ -88,7 +88,7 @@ class Predict extends Component {
         <StatusBar hidden />
         {this.state.loading ? (
           <View style={styles.loader}>
-            <ActivityIndicator size={65} color="#00aeefff" />
+            <ActivityIndicator size={1} color="#00aeefff" />
             <Text style={styles.loaderText}>Analysis in progress...</Text>
           </View>
         ) : (
